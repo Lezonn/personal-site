@@ -2,7 +2,7 @@
   <main>
     <div>
       <h2>🛠️ Under Construction 🛠️</h2>
-      <h2>Please come again later 😃</h2>
+      <h2>Please come again later 😅</h2>
     </div>
   </main>
 </template>
