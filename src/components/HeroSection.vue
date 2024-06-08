@@ -1,18 +1,18 @@
 <template>
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Hi👋, I'm Leonard Zonaphan</h1>
-      <h1>Computer Science Fresh Graduate from Binus University</h1>
-    </div>
+  <section id="hero" class="hero h-screen">
+    <v-container class="d-flex align-center justify-center h-100">
+      <h1>
+        Hi👋, I'm Leonard Zonaphan <br />
+        Computer Science Fresh Graduate from Binus University
+      </h1>
+    </v-container>
   </section>
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/variables';
+
 .hero {
-  height: calc(100vh - 60px);
-  background-color: #f4f4f4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(to bottom, $primary-background-color, $secondary-background-color);
 }
 </style>

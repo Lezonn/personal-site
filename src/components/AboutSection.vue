@@ -1,6 +1,6 @@
 <template>
-  <section class="about">
-    <div class="about-content">
+  <section id="about" class="about h-screen">
+    <v-container class="d-flex align-center justify-center h-100 flex-column">
       <h1>About Me</h1>
       <p>
         Leonard Zonaphan is a computer science fresh graduate at Bina Nusantara University, with a
@@ -12,17 +12,14 @@
         Leonard enjoys topics related to technology, finance, entrepreneurship, and games. In his
         free time, he likes to do sports and gain new insights from courses & podcasts.
       </p>
-    </div>
+    </v-container>
   </section>
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/variables';
+
 .about {
-  height: 100vh;
-  background-color: #f4f4f4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  background: linear-gradient(to bottom, $secondary-background-color, $primary-background-color);
 }
 </style>

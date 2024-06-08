@@ -1,17 +1,15 @@
 <template>
-  <section class="project">
-    <div class="project-content">
+  <section id="project" class="project h-screen">
+    <v-container class="d-flex align-center justify-center h-100">
       <h1>Project</h1>
-    </div>
+    </v-container>
   </section>
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/variables';
+
 .project {
-  height: 100vh;
-  background-color: #f4f4f4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(to bottom, $secondary-background-color, $primary-background-color);
 }
 </style>
