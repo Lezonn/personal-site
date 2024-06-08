@@ -1,22 +1,21 @@
+<script setup>
+import NavigationBar from '@/components/NavigationBar.vue'
+import FooterBar from '@/components/FooterBar.vue'
+import HeroSection from '@/components/HeroSection.vue'
+import AboutSection from '@/components/AboutSection.vue'
+import ExperienceSection from '@/components/ExperienceSection.vue'
+import ProjectSection from '@/components/ProjectSection.vue'
+</script>
+
 <template>
   <main>
-    <div>
-      <h2>🛠️ Under Construction 🛠️</h2>
-      <h2>Please come again later 😃</h2>
-    </div>
+    <navigation-bar />
+    <hero-section />
+    <about-section />
+    <experience-section />
+    <project-section />
+    <footer-bar />
   </main>
 </template>
 
-<style scoped>
-main {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
-
-main > div > h2 {
-  text-align: center;
-}
-</style>
+<style lang="scss" scoped></style>
