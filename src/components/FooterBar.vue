@@ -9,7 +9,7 @@
       </a>
       <a
         class="mx-2"
-        href="https://www.linkedin.com/leonard-zonaphan"
+        href="https://www.linkedin.com/in/leonard-zonaphan/"
         target="_blank"
         rel="noopener noreferrer"
       >
