@@ -1,8 +1,7 @@
 <template>
   <nav class="d-flex justify-center w-100 position-fixed">
-    <a href="#hero">Home</a>
+    <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="#experience">Experience</a>
     <a href="#project">Project</a>
   </nav>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <section id="hero" class="hero h-screen">
+  <section id="home" class="hero h-screen">
     <v-container class="d-flex align-center justify-center h-100">
       <h1>
         Hi👋, I'm Leonard Zonaphan <br />
