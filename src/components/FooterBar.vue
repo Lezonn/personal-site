@@ -1,13 +1,18 @@
 <template>
   <footer class="d-flex justify-center align-center flex-column">
     <div class="contact-icon">
-      <a class="mx-2" href="https://github.com/Lezonn">
+      <a class="mx-2" href="https://github.com/Lezonn" target="_blank" rel="noopener noreferrer">
         <img width="30" height="30" src="/src/assets/icons/github-icon.svg" />
       </a>
-      <a class="mx-2" href="mailto:lezonmail@gmail.com">
+      <a class="mx-2" href="mailto:lezonmail@gmail.com" target="_blank" rel="noopener noreferrer">
         <img width="30" height="30" src="/src/assets/icons/gmail-icon.svg" />
       </a>
-      <a class="mx-2" href="https://www.linkedin.com/leonard-zonaphan">
+      <a
+        class="mx-2"
+        href="https://www.linkedin.com/leonard-zonaphan"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img width="30" height="30" src="/src/assets/icons/linkedin-icon.svg" />
       </a>
     </div>
