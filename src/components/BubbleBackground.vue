@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const bubbles = ref([])
+let interval = ref(null)
 let count = 0
 
 function spawnBubble() {
@@ -15,12 +16,27 @@ function spawnBubble() {
 
 function removeBubble(id) {
   bubbles.value = this.bubbles.filter((bubble) => bubble.id !== id)
-  console.log(bubbles.value)
 }
 
-setInterval(() => {
-  spawnBubble()
-}, 1000)
+function startSpawningBubbles() {
+  if (interval.value === null) {
+    interval.value = setInterval(spawnBubble, 1000)
+  }
+}
+
+function stopSpawningBubbles() {
+  clearInterval(interval.value)
+  interval.value = null
+}
+
+function handleVisibilityChange() {
+  document.hidden ? stopSpawningBubbles() : startSpawningBubbles()
+}
+
+onMounted(() => {
+  startSpawningBubbles()
+  document.addEventListener('visibilitychange', handleVisibilityChange)
+})
 </script>
 
 <template>
