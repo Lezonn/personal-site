@@ -69,6 +69,6 @@ const experiences = [
 @import '@/assets/styles/variables';
 
 .about {
-  background: linear-gradient(to bottom, $secondary-background-color, $primary-background-color);
+  background-color: $secondary-background-color;
 }
 </style>

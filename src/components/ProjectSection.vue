@@ -10,6 +10,6 @@
 @import '@/assets/styles/variables';
 
 .project {
-  background: linear-gradient(to bottom, $primary-background-color, $secondary-background-color);
+  background-color: $secondary-background-color;
 }
 </style>
