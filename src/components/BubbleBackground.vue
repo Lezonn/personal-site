@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const bubbles = ref([])
-let interval = ref(null)
+const interval = ref(null)
 let count = 0
 
 function spawnBubble() {
@@ -42,18 +42,20 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopSpawningBubbles()
-  document.removeEventListener('visibilitychange', this.handleVisibilityChange)
+  document.removeEventListener('visibilitychange', handleVisibilityChange)
 })
 </script>
 
 <template>
-  <div
-    v-for="bubble in bubbles"
-    :key="bubble.id"
-    class="bubble"
-    :style="{ left: bubble.x + 'px', animationDuration: bubble.duration + 's' }"
-    @animationend="removeBubble(bubble.id)"
-  ></div>
+  <div class="bubble-container">
+    <div
+      v-for="bubble in bubbles"
+      :key="bubble.id"
+      class="bubble"
+      :style="{ left: bubble.x + 'px', animationDuration: bubble.duration + 's' }"
+      @animationend="removeBubble(bubble.id)"
+    ></div>
+  </div>
 </template>
 
 <style scoped lang="scss">
