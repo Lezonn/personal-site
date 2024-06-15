@@ -15,7 +15,7 @@ function spawnBubble() {
 }
 
 function removeBubble(id) {
-  bubbles.value = this.bubbles.filter((bubble) => bubble.id !== id)
+  bubbles.value = bubbles.value.filter((bubble) => bubble.id !== id)
 }
 
 function startSpawningBubbles() {
