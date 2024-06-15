@@ -40,8 +40,8 @@ nav {
   z-index: 1000;
 
   a {
-    color: $primary-font-color;
     text-decoration: none;
+    color: $dark-font-color;
     position: relative;
     margin: 8px;
     padding: 8px;
