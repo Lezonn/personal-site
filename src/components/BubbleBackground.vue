@@ -62,12 +62,12 @@ onUnmounted(() => {
 @import '@/assets/styles/variables';
 .bubble {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 360px;
   opacity: 50%;
+  border-radius: 360px;
   bottom: 0;
-  background: radial-gradient($secondary-background-color, $primary-background-color);
+  width: $--42px;
+  height: $--42px;
+  background: radial-gradient($--color-background-secondary, $--color-background-primary);
   animation: gradientAnimation ease-in;
 }
 

@@ -1,6 +1,52 @@
-// Color palette
-$primary-font-color: #075a4e;
-$dark-font-color: #333333;
-$dark-light-font-color: #454545;
-$primary-background-color: #bdcdd6;
-$secondary-background-color: #eee9da;
+// color pallete
+$--color-text-primary: #075a4e;
+$--color-dark: #333333;
+$--color-dark-light: #454545;
+$--color-background-primary: #bdcdd6;
+$--color-background-secondary: #eee9da;
+
+// font family
+$--title-font: 'Averia Libre', sans-serif;
+$--body-font: 'Poppins', sans-serif;
+
+// font size
+$--font-h1: clamp(3.2rem, 0.5692rem + 8.238vw, 13.75rem);
+$--font-h2: clamp(1.5rem, 1.0982rem + 1.7143vw, 2.8125rem);
+$--font-h3: clamp(1.375rem, 1.1837rem + 0.8163vw, 2rem);
+$--font-h4: clamp(1.375rem, 1.1837rem + 0.8163vw, 1.6rem);
+$--font-h5: clamp(1rem, 0.9235rem + 0.3265vw, 1.25rem);
+$--font-h6: clamp(1rem, 0.9617rem + 0.1633vw, 1.125rem);
+$--font-body: clamp(1rem, 0.8852rem + 0.4898vw, 1.375rem);
+$--font-link: clamp(0.875rem, 0.7985rem + 0.3265vw, 1.125rem);
+$--font-mini: clamp(0.875rem, 0.8367rem + 0.1633vw, 1rem);
+
+// size
+$--14px: 0.875rem;
+$--15px: 0.9375rem;
+$--16px: 1rem;
+$--17px: 1.0625rem;
+$--18px: 1.125rem;
+$--19px: 1.1875rem;
+$--20px: 1.25rem;
+$--21px: 1.3125rem;
+$--24px: 1.5rem;
+$--42px: 2.652rem;
+$--64px: 4rem;
+
+// spacing
+$--spacing-xxl: max(130px, calc(130px + (260 - 130) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-xl: max(64px, calc(64px + (128 - 64) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-l: max(42px, calc(42px + (84 - 42) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-m: max(24px, calc(24px + (48 - 24) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-s: max(21px, calc(21px + (42 - 21) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-xs: max(14px, calc(14px + (28 - 14) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-xxl: max(130px, calc(130px + (260 - 130) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-xl: max($--64px, calc($--64px + (128 - 64) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-l: max($--42px, calc($--42px + (84 - 42) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-m: max($--24px, calc($--24px + (48 - 24) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-s: max($--21px, calc($--21px + (42 - 21) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-xs: max($--14px, calc($--14px + (28 - 14) * ((100vw - 375px) / (1600 - 375))));
+$--spacing-xxs: max(
+  calc($--14px / 2),
+  calc(($--14px / 2) + (14 - 7) * ((100vw - 375px) / (1600 - 375)))
+);

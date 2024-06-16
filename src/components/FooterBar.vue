@@ -1,37 +1,81 @@
 <template>
-  <footer class="d-flex justify-center align-center flex-column">
-    <div class="contact-icon">
-      <a class="mx-2" href="https://github.com/Lezonn" target="_blank" rel="noopener noreferrer">
-        <img width="30" height="30" src="/src/assets/icons/github-icon.svg" />
-      </a>
-      <a class="mx-2" href="mailto:lezonmail@gmail.com" target="_blank" rel="noopener noreferrer">
-        <img width="30" height="30" src="/src/assets/icons/gmail-icon.svg" />
-      </a>
-      <a
-        class="mx-2"
-        href="https://www.linkedin.com/in/leonard-zonaphan/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img width="30" height="30" src="/src/assets/icons/linkedin-icon.svg" />
-      </a>
-    </div>
-    <div class="copyright">
-      <p>Copyright ©️ 2024 Leonard Zonaphan</p>
-    </div>
+  <footer class="footer d-flex justify-center align-center flex-column">
+    <v-container fluid>
+      <v-row no-gutters>
+        <v-col class="footer_copyright" offset="1" cols="5">
+          ©️ 2024 Leonard Zonaphan • Jakarta
+        </v-col>
+        <v-col class="footer_social" offset="1" cols="4" sm="1" md="1">
+          <ul class="footer_social_list d-flex flex-column">
+            <li class="footer_social_list_elsewhere">Elsewhere</li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/leonard-zonaphan/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Linkedin
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Lezonn" target="_blank" rel="noopener noreferrer">
+                Github
+              </a>
+            </li>
+          </ul>
+        </v-col>
+        <v-col class="footer_contact" offset="1" cols="5" sm="2" md="2">
+          <ul class="footer_contact_list d-flex flex-column">
+            <li class="footer_contact_list_contact">Contact</li>
+            <li>
+              <a href="mailto:lezonmail@gmail.com" target="_blank" rel="noopener noreferrer">
+                lezonmail@gmail.com
+              </a>
+            </li>
+          </ul>
+        </v-col>
+      </v-row>
+    </v-container>
   </footer>
 </template>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/variables';
 
-footer {
-  height: 100px;
-  background-color: rgba($color: $secondary-background-color, $alpha: 0.8);
-  backdrop-filter: blur(10px);
+.footer {
+  background-color: $--color-background-secondary;
+  padding: $--spacing-xl 0 $--spacing-m;
 
-  .copyright {
-    color: #363636;
+  &_copyright {
+    color: $--color-dark-light;
   }
+
+  &_social_list,
+  &_contact_list {
+    &_elsewhere,
+    &_contact {
+      color: $--color-text-primary;
+      font-weight: 600;
+    }
+
+    & > li {
+      margin-bottom: $--spacing-xs;
+
+      & > a {
+        color: $--color-dark-light;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    &_copyright {
+      display: none;
+    }
+  }
+}
+@media (min-width: 769px) {
+  /* Styles for desktops */
 }
 </style>

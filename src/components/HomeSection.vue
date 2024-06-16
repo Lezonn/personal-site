@@ -4,51 +4,53 @@ import BubbleBackground from './BubbleBackground.vue'
 
 <template>
   <section id="home" class="home h-screen">
-    <v-container class="d-flex flex-column align-center justify-center h-100">
-      <h1 class="text-center">
-        <span class="text-name">Hi, I'm Leonard</span>
-        <span class="text-about">A Software Engineer</span>
-      </h1>
-      <div class="description">
-        <p class="text-description text-center">
-          I'm passionate about exploring new technologies around web development, including frontend
-          and backend.
-        </p>
-      </div>
+    <h1 class="home_content_h1 text-center">
+      <span class="home_content_h1_name">Hi. I'm Leo</span>
+      <span class="home_content_h1_about">A Software Engineer</span>
+    </h1>
+    <v-container fluid class="home_content_description d-flex justify-center">
+      <v-row no-gutters>
+        <v-spacer />
+        <v-col cols="12" sm="10" md="7" lg="6">
+          <p class="home_content_description_text text-center">
+            I'm passionate in exploring about software development, including frontend and backend
+            development.
+          </p>
+        </v-col>
+        <v-spacer />
+      </v-row>
     </v-container>
     <bubble-background />
   </section>
 </template>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import '@/assets/styles/variables';
 .home {
-  background: linear-gradient(to bottom, $primary-background-color, $secondary-background-color);
-}
+  background: linear-gradient(
+    to bottom,
+    $--color-background-primary,
+    $--color-background-secondary
+  );
 
-.text-name {
-  display: block;
-  font-family: 'Permanent Marker', sans-serif;
-  font-weight: 500;
-  font-size: calc(4vw + 32px);
-  color: $primary-font-color;
-  z-index: 1000;
-}
+  &_content {
+    &_h1 {
+      padding: 8rem 0 3rem;
 
-.text-about {
-  font-family: 'Permanent Marker', sans-serif;
-  font-size: 24px;
-  opacity: 80%;
-}
+      &_name {
+        display: block;
+        font-family: $--title-font;
+        font-size: $--font-h1;
+        color: $--color-text-primary;
+        z-index: 1000;
+      }
 
-.description {
-  margin-top: 10vh;
-}
-
-.text-description {
-  max-width: 800px;
-  font-size: 18px;
-  font-weight: 400;
+      &_about {
+        font-family: $--title-font;
+        font-size: $--font-h2;
+        font-weight: 400;
+      }
+    }
+  }
 }
 </style>
