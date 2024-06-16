@@ -1,3 +1,17 @@
-body {
+@import './variables.scss';
+
+:root {
   font-family: 'Poppins', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  font-size: $--font-body;
+}
+
+a {
+  text-decoration: none;
 }
