@@ -17,35 +17,40 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="d-flex justify-center">
+  <header class="d-flex justify-center position-fixed w-100">
     <nav :class="{ 'navbar-floating': isNavbarFloating }">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#project">Project</a>
+      <ul>
+        <li>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#project">Project</a>
+        </li>
+      </ul>
     </nav>
-  </div>
+  </header>
 </template>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/variables';
 
-nav {
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  position: fixed;
-  height: 60px;
-  margin-top: 20px;
-  transition: all 0.3s ease-out;
+header {
   z-index: 1000;
+}
 
-  a {
-    text-decoration: none;
-    color: $dark-font-color;
-    position: relative;
-    margin: 8px;
-    padding: 8px;
+nav {
+  display: flex;
+  border-radius: 50px;
+  height: 56px;
+  align-items: center;
+  transition: all 0.3s ease-out;
+  margin-top: $--spacing-xs;
+
+  ul > li > a {
     font-weight: 600;
+    position: relative;
+    color: $--color-dark-light;
+    margin: $--spacing-xxs;
+    padding: $--spacing-xxs;
 
     &::after {
       content: '';
@@ -68,9 +73,8 @@ nav {
 }
 
 .navbar-floating {
-  padding: 0 10px;
+  padding: 0 $--spacing-xxs;
   background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
 }
 </style>
