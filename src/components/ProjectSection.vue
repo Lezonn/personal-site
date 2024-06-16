@@ -10,6 +10,6 @@
 @import '@/assets/styles/variables';
 
 .project {
-  background-color: $secondary-background-color;
+  background-color: $--color-background-secondary;
 }
 </style>
