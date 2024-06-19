@@ -8,7 +8,7 @@ let count = 0
 function spawnBubble() {
   const bubble = {
     id: count++,
-    x: Math.random() * window.innerWidth,
+    x: Math.max(Math.random() * window.innerWidth - 45, 0),
     duration: 5 + Math.random() * 5
   }
   bubbles.value.push(bubble)
