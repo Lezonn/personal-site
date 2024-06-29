@@ -1,7 +1,7 @@
 <template>
   <section id="about" class="about h-screen">
     <v-container class="d-flex align-center justify-center h-100 flex-column">
-      <h1 class="my-2">About</h1>
+      <h2 class="my-2">About</h2>
     </v-container>
   </section>
 </template>
