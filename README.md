@@ -1,35 +1,24 @@
-# personal-site
+# Personal Website
 
-This template should help get you started developing with Vue 3 in Vite.
+![GitHub last commit](https://img.shields.io/github/last-commit/Lezonn/personal-site)
+![GitHub repo size](https://img.shields.io/github/repo-size/Lezonn/personal-site)
+![GitHub](https://img.shields.io/github/license/Lezonn/personal-site)
 
-## Recommended IDE Setup
+This repository hosts the source code for my personal website.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Overview
 
-## Customize configuration
+This project contains the codebase for my personal website, showcasing my portfolio, projects, and other relevant information.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Technologies Used
 
-## Project Setup
+- Vue.js
+- SASS
+- HTML
+- CSS
 
-```sh
-npm install
-```
+## Contact
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- Email: lezonmail@gmail.com
+- LinkedIn: [Leonard Zonaphan](https://www.linkedin.com/in/leonard-zonaphan/)
+- GitHub: [Lezonn](https://github.com/Lezonn/)
