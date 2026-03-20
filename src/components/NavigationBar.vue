@@ -2,6 +2,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const isNavbarFloating = ref(false)
+const activeSection = ref('home')
+
+let sectionObserver
 
 function onScroll() {
   isNavbarFloating.value = window.scrollY > 0
@@ -9,10 +12,24 @@ function onScroll() {
 
 onMounted(() => {
   window.addEventListener('scroll', onScroll)
+
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) activeSection.value = entry.target.id
+      })
+    },
+    { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+  )
+
+  document.querySelectorAll('section[id]').forEach((section) => {
+    sectionObserver.observe(section)
+  })
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
+  sectionObserver?.disconnect()
 })
 </script>
 
@@ -21,9 +38,9 @@ onUnmounted(() => {
     <nav :class="{ 'navbar-floating': isNavbarFloating }">
       <ul>
         <li>
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#project">Project</a>
+          <a href="#home" :class="{ 'nav-link--active': activeSection === 'home' }">Home</a>
+          <a href="#about" :class="{ 'nav-link--active': activeSection === 'about' }">About</a>
+          <a href="#project" :class="{ 'nav-link--active': activeSection === 'project' }">Project</a>
         </li>
       </ul>
     </nav>
@@ -68,6 +85,14 @@ nav {
     &:hover::after {
       transform: scaleX(1);
       transform-origin: left;
+    }
+
+    &.nav-link--active {
+      color: $--color-text-primary;
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 }
