@@ -34,6 +34,7 @@ import BubbleBackground from './BubbleBackground.vue'
   );
   min-height: 100vh;
   position: relative;
+  padding-top: 80px;
 
   &__center {
     max-width: 680px;
@@ -58,11 +59,20 @@ import BubbleBackground from './BubbleBackground.vue'
     overflow: hidden;
     white-space: nowrap;
     vertical-align: bottom;
-    border-right: 3px solid $--color-text-primary;
+    position: relative;
     width: 0;
-    animation:
-      typing 2s steps(19, end) 0.5s forwards,
-      blink-caret 0.75s step-end infinite;
+    animation: typing 2s steps(19, end) 0.5s forwards;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 10%;
+      height: 80%;
+      width: 2px;
+      background: $--color-text-primary;
+      animation: blink-caret 0.75s step-end infinite;
+    }
   }
 
   &__desc {
@@ -91,17 +101,17 @@ import BubbleBackground from './BubbleBackground.vue'
 
 @keyframes typing {
   to {
-    width: 14em;
+    width: 10.5em;
   }
 }
 
 @keyframes blink-caret {
   from,
   to {
-    border-color: transparent;
+    opacity: 0;
   }
   50% {
-    border-color: $--color-text-primary;
+    opacity: 1;
   }
 }
 </style>
