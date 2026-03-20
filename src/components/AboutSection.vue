@@ -71,7 +71,7 @@ const education = [
               <v-chip
                 v-for="(skill, i) in skills"
                 :key="skill"
-                variant="tonal"
+                variant="outlined"
                 color="#075a4e"
                 :class="`reveal-delay-${i + 3}`"
                 class="reveal"
@@ -147,7 +147,7 @@ const education = [
   }
 
   &__bio {
-    margin-bottom: $--spacing-m;
+    margin-bottom: $--spacing-l;
 
     p {
       color: $--color-dark-light;
@@ -156,18 +156,20 @@ const education = [
   }
 
   &__skills {
-    margin-bottom: $--spacing-m;
+    margin-bottom: $--spacing-l;
   }
 
   &__section {
-    margin-bottom: $--spacing-m;
+    margin-bottom: $--spacing-l;
   }
 
   &__subtitle {
-    font-family: $--title-font;
-    font-size: $--font-h3;
-    color: $--color-text-primary;
-    margin-bottom: $--spacing-xxs;
+    font-size: $--font-h5;
+    font-weight: 700;
+    color: $--color-dark;
+    padding-left: 12px;
+    border-left: 3px solid $--color-text-primary;
+    margin-bottom: $--spacing-xs;
   }
 }
 
@@ -198,8 +200,8 @@ const education = [
     position: absolute;
     left: -22px;
     top: 5px;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: $--color-text-primary;
   }
@@ -207,8 +209,8 @@ const education = [
   &__date {
     display: block;
     font-size: $--font-mini;
-    color: $--color-text-primary;
-    font-weight: 600;
+    color: $--color-dark-light;
+    font-weight: 500;
     margin-bottom: 2px;
   }
 
