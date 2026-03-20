@@ -3,32 +3,22 @@ import BubbleBackground from './BubbleBackground.vue'
 </script>
 
 <template>
-  <section id="home" class="home h-screen">
-    <h1 class="home_content_h1 text-center">
-      <span class="home_content_h1_name">Hi. I'm Leo</span>
-      <span class="home_content_h1_about">A Software Engineer</span>
-    </h1>
-    <v-container fluid class="home_content_description d-flex justify-center">
-      <v-row no-gutters>
-        <v-spacer />
-        <v-col cols="12" sm="10" md="7" lg="6">
-          <p class="home_content_description_text text-center">
-            I'm passionate in exploring about software development, including frontend and backend
-            development.
-          </p>
-        </v-col>
-        <v-spacer />
-      </v-row>
-      <v-row no-gutters class="mt-6">
-        <v-spacer />
-        <v-col cols="12" class="d-flex justify-center">
-          <v-btn variant="outlined" color="#075a4e" size="large" href="#project" class="cta-btn">
-            See My Work
-          </v-btn>
-        </v-col>
-        <v-spacer />
-      </v-row>
-    </v-container>
+  <section id="home" class="home d-flex align-center justify-center flex-column">
+    <div class="home__center text-center">
+      <h1>
+        <span class="home__name">Hi. I'm Leo</span>
+        <span class="home__subtitle">A Software Engineer</span>
+      </h1>
+      <p class="home__desc">
+        I'm passionate in exploring about software development, including frontend and backend
+        development.
+      </p>
+      <div class="home__actions">
+        <v-btn variant="outlined" color="#075a4e" size="large" href="#project" class="cta-btn">
+          See My Work
+        </v-btn>
+      </div>
+    </div>
     <bubble-background />
   </section>
 </template>
@@ -42,34 +32,49 @@ import BubbleBackground from './BubbleBackground.vue'
     $--color-background-primary,
     $--color-background-secondary
   );
+  min-height: 100vh;
+  position: relative;
 
-  &_content {
-    &_h1 {
-      padding: 8rem 0 3rem;
+  &__center {
+    max-width: 680px;
+    padding: 0 $--spacing-m;
+    z-index: 1;
+  }
 
-      &_name {
-        display: block;
-        font-family: $--title-font;
-        font-size: $--font-h1;
-        color: $--color-text-primary;
-        z-index: 1000;
-      }
+  &__name {
+    display: block;
+    font-family: $--title-font;
+    font-size: $--font-h1;
+    color: $--color-text-primary;
+    line-height: 1;
+    margin-bottom: $--spacing-xs;
+  }
 
-      &_about {
-        display: inline-block;
-        font-family: $--title-font;
-        font-size: $--font-h2;
-        font-weight: 400;
-        overflow: hidden;
-        white-space: nowrap;
-        vertical-align: bottom;
-        border-right: 3px solid $--color-text-primary;
-        width: 0;
-        animation:
-          typing 2s steps(19, end) 0.5s forwards,
-          blink-caret 0.75s step-end infinite;
-      }
-    }
+  &__subtitle {
+    display: inline-block;
+    font-family: $--title-font;
+    font-size: $--font-h2;
+    font-weight: 400;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+    border-right: 3px solid $--color-text-primary;
+    width: 0;
+    animation:
+      typing 2s steps(19, end) 0.5s forwards,
+      blink-caret 0.75s step-end infinite;
+  }
+
+  &__desc {
+    font-size: $--font-body;
+    color: $--color-dark-light;
+    max-width: 480px;
+    margin: $--spacing-m auto 0;
+    line-height: 1.8;
+  }
+
+  &__actions {
+    margin-top: $--spacing-l;
   }
 }
 
