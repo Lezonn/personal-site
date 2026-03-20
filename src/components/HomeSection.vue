@@ -37,7 +37,7 @@ import BubbleBackground from './BubbleBackground.vue'
   padding-top: 80px;
 
   &__center {
-    max-width: 680px;
+    width: 100%;
     padding: 0 $--spacing-m;
     z-index: 1;
   }
