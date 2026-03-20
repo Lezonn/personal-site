@@ -1,38 +1,33 @@
+<script setup>
+import { computed } from 'vue'
+
+const currentYear = computed(() => new Date().getFullYear())
+</script>
+
 <template>
-  <footer class="footer d-flex justify-center align-center flex-column">
+  <footer class="footer">
     <v-container fluid>
-      <v-row no-gutters>
-        <v-col class="footer_copyright" offset="1" cols="5">
-          ©️ 2024 Leonard Zonaphan • Jakarta
+      <v-row align="center" no-gutters>
+        <v-col cols="12" md="4" class="text-center text-md-start footer__copyright">
+          © {{ currentYear }} Leonard Zonaphan • Jakarta
         </v-col>
-        <v-col class="footer_social" offset="1" cols="4" sm="1" md="1">
-          <ul class="footer_social_list d-flex flex-column">
-            <li class="footer_social_list_elsewhere">Elsewhere</li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/leonard-zonaphan/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Linkedin
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/Lezonn" target="_blank" rel="noopener noreferrer">
-                Github
-              </a>
-            </li>
-          </ul>
+
+        <v-col cols="12" md="4" class="d-none d-md-flex justify-center">
+          <span class="footer__tagline">Software Engineer</span>
         </v-col>
-        <v-col class="footer_contact" offset="1" cols="5" sm="2" md="2">
-          <ul class="footer_contact_list d-flex flex-column">
-            <li class="footer_contact_list_contact">Contact</li>
-            <li>
-              <a href="mailto:lezonmail@gmail.com" target="_blank" rel="noopener noreferrer">
-                lezonmail@gmail.com
-              </a>
-            </li>
-          </ul>
+
+        <v-col cols="12" md="4" class="d-flex justify-center justify-md-end footer__links">
+          <a
+            href="https://www.linkedin.com/in/leonard-zonaphan/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a href="https://github.com/Lezonn" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <a href="mailto:lezonmail@gmail.com"> Email </a>
         </v-col>
       </v-row>
     </v-container>
@@ -44,38 +39,34 @@
 
 .footer {
   background-color: $--color-background-secondary;
-  padding: $--spacing-xl 0 $--spacing-m;
+  padding: $--spacing-m 0;
+  border-top: 1px solid rgba(7, 90, 78, 0.1);
 
-  &_copyright {
+  &__copyright {
+    font-size: $--font-mini;
     color: $--color-dark-light;
+    padding: $--spacing-xxs 0;
   }
 
-  &_social_list,
-  &_contact_list {
-    &_elsewhere,
-    &_contact {
-      color: $--color-text-primary;
-      font-weight: 600;
-    }
+  &__tagline {
+    font-size: $--font-mini;
+    color: $--color-text-primary;
+    font-weight: 600;
+  }
 
-    & > li {
-      margin-bottom: $--spacing-xs;
+  &__links {
+    gap: $--spacing-m;
+    padding: $--spacing-xxs 0;
 
-      & > a {
-        color: $--color-dark-light;
+    a {
+      color: $--color-dark-light;
+      font-weight: 500;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $--color-text-primary;
       }
     }
   }
-}
-
-@media (max-width: 768px) {
-  .footer {
-    &_copyright {
-      display: none;
-    }
-  }
-}
-@media (min-width: 769px) {
-  /* Styles for desktops */
 }
 </style>

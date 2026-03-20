@@ -50,3 +50,6 @@ $--spacing-xxs: max(
   calc($--14px / 2),
   calc(($--14px / 2) + (14 - 7) * ((100vw - 375px) / (1600 - 375)))
 );
+
+// surface
+$--color-surface: #f7f4ee;
