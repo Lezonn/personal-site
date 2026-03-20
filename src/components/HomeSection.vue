@@ -19,6 +19,15 @@ import BubbleBackground from './BubbleBackground.vue'
         </v-col>
         <v-spacer />
       </v-row>
+      <v-row no-gutters class="mt-6">
+        <v-spacer />
+        <v-col cols="12" class="d-flex justify-center">
+          <v-btn variant="outlined" color="#075a4e" size="large" href="#project" class="cta-btn">
+            See My Work
+          </v-btn>
+        </v-col>
+        <v-spacer />
+      </v-row>
     </v-container>
     <bubble-background />
   </section>
@@ -26,6 +35,7 @@ import BubbleBackground from './BubbleBackground.vue'
 
 <style lang="scss" scoped>
 @import '@/assets/styles/variables';
+
 .home {
   background: linear-gradient(
     to bottom,
@@ -46,11 +56,47 @@ import BubbleBackground from './BubbleBackground.vue'
       }
 
       &_about {
+        display: inline-block;
         font-family: $--title-font;
         font-size: $--font-h2;
         font-weight: 400;
+        overflow: hidden;
+        white-space: nowrap;
+        vertical-align: bottom;
+        border-right: 3px solid $--color-text-primary;
+        width: 0;
+        animation:
+          typing 2s steps(19, end) 0.5s forwards,
+          blink-caret 0.75s step-end infinite;
       }
     }
+  }
+}
+
+.cta-btn {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(7, 90, 78, 0.25);
+  }
+}
+
+@keyframes typing {
+  to {
+    width: 14em;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: $--color-text-primary;
   }
 }
 </style>
