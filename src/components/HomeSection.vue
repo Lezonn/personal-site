@@ -38,6 +38,8 @@ const root = useReveal()
           :src="leoImg"
           class="home_portrait_img"
           alt="Portrait of Leonard Zonaphan"
+          width="900"
+          height="1200"
           fetchpriority="high"
         />
       </div>
