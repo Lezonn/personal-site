@@ -5,6 +5,13 @@ $--color-dark-light: #454545;
 $--color-background-primary: #bdcdd6;
 $--color-background-secondary: #eee9da;
 
+// deep & accent tones for dark/feature sections
+$--color-ink: #0a2e29;
+$--color-ink-soft: #10403a;
+$--color-cream: #f2ecdd;
+$--color-cream-dim: #b9cdc4;
+$--color-accent: #e8b04b;
+
 // font family
 $--title-font: 'Averia Libre', sans-serif;
 $--body-font: 'Poppins', sans-serif;
@@ -33,13 +40,7 @@ $--24px: 1.5rem;
 $--42px: 2.652rem;
 $--64px: 4rem;
 
-// spacing
-$--spacing-xxl: max(130px, calc(130px + (260 - 130) * ((100vw - 375px) / (1600 - 375))));
-$--spacing-xl: max(64px, calc(64px + (128 - 64) * ((100vw - 375px) / (1600 - 375))));
-$--spacing-l: max(42px, calc(42px + (84 - 42) * ((100vw - 375px) / (1600 - 375))));
-$--spacing-m: max(24px, calc(24px + (48 - 24) * ((100vw - 375px) / (1600 - 375))));
-$--spacing-s: max(21px, calc(21px + (42 - 21) * ((100vw - 375px) / (1600 - 375))));
-$--spacing-xs: max(14px, calc(14px + (28 - 14) * ((100vw - 375px) / (1600 - 375))));
+// spacing — fluid scale, single source of truth
 $--spacing-xxl: max(130px, calc(130px + (260 - 130) * ((100vw - 375px) / (1600 - 375))));
 $--spacing-xl: max($--64px, calc($--64px + (128 - 64) * ((100vw - 375px) / (1600 - 375))));
 $--spacing-l: max($--42px, calc($--42px + (84 - 42) * ((100vw - 375px) / (1600 - 375))));

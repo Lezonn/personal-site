@@ -6,15 +6,13 @@ import { inject } from '@vercel/analytics'
 import App from './App.vue'
 import router from './router'
 
-// Vuetify
+// Vuetify — import only the components actually used (tree-shaken)
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+import { VBtn, VContainer, VRow, VCol } from 'vuetify/components'
 
 const vuetify = createVuetify({
-  components,
-  directives
+  components: { VBtn, VContainer, VRow, VCol }
 })
 
 const app = createApp(App)

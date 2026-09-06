@@ -4,15 +4,19 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const bubbles = ref([])
 const interval = ref(null)
 let count = 0
+const MAX_BUBBLES = 18
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
 
 function spawnBubble() {
-  const size = 20 + Math.random() * 40
+  if (bubbles.value.length >= MAX_BUBBLES) bubbles.value.shift()
   const bubble = {
     id: count++,
-    x: Math.max(Math.random() * window.innerWidth - size / 2, 0),
-    duration: 5 + Math.random() * 5,
-    size,
-    drift: (Math.random() - 0.5) * 60
+    x: Math.max(Math.random() * window.innerWidth - 45, 0),
+    size: 18 + Math.random() * 36,
+    duration: 6 + Math.random() * 5
   }
   bubbles.value.push(bubble)
 }
@@ -22,10 +26,9 @@ function removeBubble(id) {
 }
 
 function startSpawningBubbles() {
-  if (interval.value === null) {
-    interval.value = setInterval(() => {
-      spawnBubble()
-    }, 1000)
+  if (interval.value === null && !prefersReducedMotion()) {
+    spawnBubble()
+    interval.value = setInterval(spawnBubble, 1400)
   }
 }
 
@@ -50,7 +53,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="bubble-container">
+  <div class="bubble-container" aria-hidden="true">
     <div
       v-for="bubble in bubbles"
       :key="bubble.id"
@@ -59,8 +62,7 @@ onUnmounted(() => {
         left: bubble.x + 'px',
         width: bubble.size + 'px',
         height: bubble.size + 'px',
-        animationDuration: bubble.duration + 's',
-        '--drift': bubble.drift + 'px'
+        animationDuration: bubble.duration + 's'
       }"
       @animationend="removeBubble(bubble.id)"
     ></div>
@@ -69,27 +71,37 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 @import '@/assets/styles/variables';
+.bubble-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
 
 .bubble {
   position: absolute;
-  opacity: 50%;
-  border-radius: 360px;
-  bottom: 0;
+  opacity: 0.5;
+  border-radius: 50%;
+  bottom: -60px;
   background: radial-gradient($--color-background-secondary, $--color-background-primary);
-  animation: gradientAnimation ease-in;
+  animation-name: floatUp;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  will-change: transform;
 }
 
-@keyframes gradientAnimation {
+@keyframes floatUp {
   0% {
-    bottom: 0%;
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(calc(var(--drift) / 2));
+    transform: translateY(0);
   }
   100% {
-    bottom: 100%;
-    transform: translateX(var(--drift));
+    transform: translateY(-110vh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble-container {
+    display: none;
   }
 }
 </style>

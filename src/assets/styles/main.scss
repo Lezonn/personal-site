@@ -4,6 +4,40 @@
   font-family: $--body-font;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+::selection {
+  background: rgba(7, 90, 78, 0.2);
+}
+
+// scroll-reveal: elements fade + rise into place (see useReveal.js)
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 li {
   list-style: none;
 }

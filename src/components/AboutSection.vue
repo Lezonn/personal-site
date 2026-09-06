@@ -1,118 +1,65 @@
 <script setup>
-import { useScrollReveal } from '@/composables/useScrollReveal'
+import { useReveal } from '@/composables/useReveal'
 
-const { el, isVisible } = useScrollReveal({ threshold: 0.1 })
+const root = useReveal()
 
-const skills = [
-  'Vue 3',
-  'JavaScript',
-  'TypeScript',
-  'Node.js',
-  'REST API',
-  'PostgreSQL',
-  'Git',
-  'HTML/CSS'
-]
-
-const experience = [
+const focusAreas = [
   {
-    period: '2023 – Present',
-    role: 'Software Engineer',
-    company: 'Company Name'
+    index: '01',
+    title: 'AI Product Owner',
+    text: 'Discovery to delivery for AI features that fix real ops pain.'
   },
   {
-    period: '2022 – 2023',
-    role: 'Frontend Developer',
-    company: 'Company Name'
+    index: '02',
+    title: 'Process Automation · RPA',
+    text: 'Map the as-is process, then automate the repetitive parts.'
+  },
+  {
+    index: '03',
+    title: 'Software Development',
+    text: 'Full-stack web apps and integrations grounded in engineering experience.'
   }
 ]
 
-const education = [
-  {
-    period: '2019 – 2023',
-    degree: 'S1 Computer Science',
-    institution: 'University Name'
-  }
+const metrics = [
+  { value: '~15', label: 'RPA solutions in production' },
+  { value: '4', label: 'GenAI initiatives shipped' },
+  { value: '127', label: 'Auto2000 branches served' },
+  { value: '68%', label: 'workload cut by automation' }
 ]
 </script>
 
 <template>
-  <section id="about" ref="el" class="about">
-    <v-container class="about__container">
-      <div class="section-header reveal" :class="{ 'is-visible': isVisible }">
-        <h2 class="section-header__title">About Me</h2>
-        <div class="section-header__line"></div>
+  <section id="about" ref="root" class="about">
+    <v-container class="about_inner">
+      <p class="about_kicker reveal">About</p>
+      <h2 class="about_heading reveal" style="transition-delay: 0.05s">
+        Engineer who speaks <em>operations</em>, owner who can <em>ship</em>.
+      </h2>
+      <p class="about_lede reveal" style="transition-delay: 0.1s">
+        I'm Leonard Zonaphan — AI Product Owner for Process Automation at Astra TSO Auto2000. I turn
+        field problems into shipped improvements, reporting impact up to C-level.
+      </p>
+      <div class="about_focus">
+        <article
+          v-for="area in focusAreas"
+          :key="area.index"
+          class="about_row reveal"
+          style="transition-delay: 0.1s"
+        >
+          <span class="about_row_index">{{ area.index }}</span>
+          <div>
+            <h3>{{ area.title }}</h3>
+            <p>{{ area.text }}</p>
+          </div>
+        </article>
       </div>
-
-      <v-row class="mt-8" align="start">
-        <!-- Photo column -->
-        <v-col cols="12" md="5" class="d-flex justify-center">
-          <div class="about__photo reveal reveal--left" :class="{ 'is-visible': isVisible }">
-            <!-- Replace src with your actual photo path -->
-            <!-- <img src="@/assets/photo.jpg" alt="Leonard Zonaphan" /> -->
-          </div>
-        </v-col>
-
-        <!-- Content column -->
-        <v-col cols="12" md="7">
-          <!-- Bio -->
-          <div class="about__bio reveal reveal-delay-1" :class="{ 'is-visible': isVisible }">
-            <p>
-              Hi, I'm Leo — a Software Engineer based in Jakarta, Indonesia. I enjoy building
-              clean, performant web applications and am passionate about both frontend and backend
-              development. I love turning complex problems into elegant, user-friendly experiences.
-            </p>
-          </div>
-
-          <!-- Skills -->
-          <div class="about__skills reveal reveal-delay-2" :class="{ 'is-visible': isVisible }">
-            <h3 class="about__subtitle">Skills</h3>
-            <div class="d-flex flex-wrap ga-2 mt-3">
-              <v-chip
-                v-for="(skill, i) in skills"
-                :key="skill"
-                variant="outlined"
-                color="#075a4e"
-                :class="`reveal-delay-${i + 3}`"
-                class="reveal"
-                :style="isVisible ? 'opacity:1;transform:translateY(0)' : ''"
-              >
-                {{ skill }}
-              </v-chip>
-            </div>
-          </div>
-
-          <!-- Experience -->
-          <div class="about__section reveal reveal-delay-3" :class="{ 'is-visible': isVisible }">
-            <h3 class="about__subtitle">Experience</h3>
-            <div class="timeline mt-3">
-              <div v-for="(item, i) in experience" :key="i" class="timeline__item">
-                <div class="timeline__dot"></div>
-                <div class="timeline__content">
-                  <span class="timeline__date">{{ item.period }}</span>
-                  <h4 class="timeline__role">{{ item.role }}</h4>
-                  <p class="timeline__company">{{ item.company }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Education -->
-          <div class="about__section reveal reveal-delay-4" :class="{ 'is-visible': isVisible }">
-            <h3 class="about__subtitle">Education</h3>
-            <div class="timeline mt-3">
-              <div v-for="(item, i) in education" :key="i" class="timeline__item">
-                <div class="timeline__dot"></div>
-                <div class="timeline__content">
-                  <span class="timeline__date">{{ item.period }}</span>
-                  <h4 class="timeline__role">{{ item.degree }}</h4>
-                  <p class="timeline__company">{{ item.institution }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </v-col>
-      </v-row>
+      <div class="about_metrics reveal">
+        <div v-for="m in metrics" :key="m.label" class="about_metric">
+          <span class="about_metric_value">{{ m.value }}</span>
+          <span class="about_metric_label">{{ m.label }}</span>
+        </div>
+      </div>
     </v-container>
   </section>
 </template>
@@ -122,109 +69,121 @@ const education = [
 
 .about {
   background-color: $--color-background-secondary;
-  min-height: 100vh;
+  padding: $--spacing-xl 0;
+  overflow: hidden;
 
-  &__container {
-    padding-top: $--spacing-xl;
-    padding-bottom: $--spacing-xl;
+  &_inner {
+    max-width: 1080px;
   }
 
-  &__photo {
-    width: 100%;
-    aspect-ratio: 1;
-    max-width: 360px;
-    border-radius: 12px;
-    border: 3px solid $--color-text-primary;
-    background-color: $--color-background-primary;
-    overflow: hidden;
-    margin-bottom: $--spacing-m;
+  &_kicker {
+    font-size: $--font-mini;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $--color-text-primary;
+    margin-bottom: 0.5rem;
+  }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+  &_heading {
+    font-family: $--title-font;
+    font-size: clamp(2rem, 1.2rem + 3.4vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: $--color-dark;
+    max-width: 760px;
+    margin: 0;
+
+    em {
+      font-style: normal;
+      background: linear-gradient(transparent 62%, rgba(232, 176, 75, 0.65) 62%);
+      padding: 0 0.1em;
     }
   }
 
-  &__bio {
-    margin-bottom: $--spacing-l;
+  &_lede {
+    max-width: 680px;
+    margin: $--spacing-s 0 0;
+    font-size: $--font-h6;
+    line-height: 1.65;
+    color: $--color-dark-light;
+  }
+
+  &_focus {
+    margin-top: $--spacing-s;
+    border-top: 2px solid $--color-ink;
+  }
+
+  &_row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: baseline;
+    padding: 1.25rem 0.5rem;
+    border-bottom: 1px solid rgba(10, 46, 41, 0.18);
+    transition:
+      background 0.25s ease,
+      padding 0.25s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.5);
+      padding-left: 1rem;
+    }
+
+    &_index {
+      font-family: $--title-font;
+      font-size: $--font-h4;
+      color: transparent;
+      -webkit-text-stroke: 1.5px $--color-accent;
+    }
+
+    h3 {
+      font-size: $--font-h5;
+      color: $--color-dark;
+      margin: 0 0 0.25rem;
+    }
 
     p {
+      margin: 0;
+      font-size: $--font-link;
       color: $--color-dark-light;
-      line-height: 1.8;
     }
   }
 
-  &__skills {
-    margin-bottom: $--spacing-l;
+  &_metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 0;
+    margin-top: $--spacing-s;
+    padding-top: $--spacing-s;
+    border-top: 1px solid rgba(10, 46, 41, 0.18);
   }
 
-  &__section {
-    margin-bottom: $--spacing-l;
-  }
+  &_metric {
+    padding: 0 1rem;
+    border-left: 2px solid $--color-accent;
 
-  &__subtitle {
-    font-size: $--font-h5;
-    font-weight: 700;
-    color: $--color-dark;
-    padding-left: 12px;
-    border-left: 3px solid $--color-text-primary;
-    margin-bottom: $--spacing-xs;
+    &_value {
+      display: block;
+      font-family: $--title-font;
+      font-size: $--font-h3;
+      line-height: 1;
+      color: $--color-ink;
+    }
+
+    &_label {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: $--font-mini;
+      color: $--color-dark-light;
+    }
   }
 }
 
-.timeline {
-  position: relative;
-  padding-left: 28px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 6px;
-    bottom: 6px;
-    width: 2px;
-    background: rgba(7, 90, 78, 0.2);
-  }
-
-  &__item {
-    position: relative;
-    margin-bottom: $--spacing-s;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &__dot {
-    position: absolute;
-    left: -22px;
-    top: 5px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: $--color-text-primary;
-  }
-
-  &__date {
-    display: block;
-    font-size: $--font-mini;
-    color: $--color-dark-light;
-    font-weight: 500;
-    margin-bottom: 2px;
-  }
-
-  &__role {
-    font-size: $--font-h5;
-    color: $--color-dark;
-    font-weight: 600;
-    margin: 0;
-  }
-
-  &__company {
-    font-size: $--font-mini;
-    color: $--color-dark-light;
-    margin: 0;
+@media (min-width: 768px) {
+  .about_metrics {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 </style>
