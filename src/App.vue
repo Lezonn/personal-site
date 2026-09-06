@@ -19,24 +19,53 @@ useMeta({
       content:
         'Leonard Zonaphan, AI Product Owner, Software Engineer, GenAI, Process Automation, RPA, UiPath, Digital Transformation, Astra, Auto2000'
     },
-    { name: 'author', content: 'Leonard Zonaphan' }
+    { name: 'author', content: 'Leonard Zonaphan' },
+    // Open Graph
+    { property: 'og:title', content: 'Leonard Zonaphan - AI Product Owner & Software Engineer' },
+    {
+      property: 'og:description',
+      content:
+        'AI Product Owner & Process Automation at Astra TSO. 4 GenAI initiatives, ~15 RPA solutions across 127 branches. Software engineering background (Blibli, BINUS).'
+    },
+    { property: 'og:type', content: 'profile' },
+    { property: 'og:url', content: 'https://www.leonardzonaphan.com' },
+    { property: 'og:image', content: 'https://www.leonardzonaphan.com/og-image.png' },
+    { property: 'og:image:width', content: '1200' },
+    { property: 'og:image:height', content: '630' },
+    { property: 'og:image:alt', content: 'Leonard Zonaphan — AI Product Owner & Software Engineer' },
+    { property: 'og:site_name', content: 'Leonard Zonaphan' },
+    // Twitter card
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Leonard Zonaphan - AI Product Owner & Software Engineer' },
+    {
+      name: 'twitter:description',
+      content: 'AI Product Owner & Process Automation at Astra TSO. 4 GenAI initiatives, ~15 RPA solutions across 127 branches.'
+    },
+    { name: 'twitter:image', content: 'https://www.leonardzonaphan.com/og-image.png' }
   ],
   link: [
     {
       rel: 'canonical',
-      href: window.location.origin
+      href: 'https://www.leonardzonaphan.com'
     }
   ],
   script: [
     {
       type: 'application/ld+json',
       json: {
-        '@context': 'http://schema.org',
+        '@context': 'https://schema.org',
         '@type': 'Person',
         name: 'Leonard Zonaphan',
+        description:
+          'AI Product Owner & Process Automation at Astra TSO Auto2000, with a software engineering background.',
         jobTitle: 'AI Product Owner & Software Engineer',
         url: 'https://www.leonardzonaphan.com',
+        image: 'https://www.leonardzonaphan.com/og-image.png',
         worksFor: { '@type': 'Organization', name: 'Astra TSO' },
+        alumniOf: { '@type': 'CollegeOrUniversity', name: 'BINUS University' },
+        email: 'mailto:lezonmail@gmail.com',
+        knowsLanguage: ['id', 'en'],
+        address: { '@type': 'PostalAddress', addressLocality: 'Jakarta', addressCountry: 'ID' },
         knowsAbout: [
           'AI Product Management',
           'GenAI',
