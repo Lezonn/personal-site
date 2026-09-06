@@ -4,6 +4,40 @@
   font-family: $--body-font;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+::selection {
+  background: rgba(7, 90, 78, 0.2);
+}
+
+// scroll-reveal: elements fade + rise into place (see useReveal.js)
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 li {
   list-style: none;
 }
@@ -15,4 +49,60 @@ p {
 a {
   font-size: $--font-link;
   text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal--left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@for $i from 1 through 8 {
+  .reveal-delay-#{$i} {
+    transition-delay: #{$i * 0.1}s;
+  }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: $--spacing-l;
+
+  &__title {
+    font-family: $--title-font;
+    font-size: $--font-h2;
+    color: $--color-dark;
+  }
+
+  &__line {
+    width: 48px;
+    height: 3px;
+    background: $--color-text-primary;
+    margin: 8px auto 0;
+    border-radius: 2px;
+  }
 }

@@ -3,17 +3,22 @@ import NavigationBar from '@/components/NavigationBar.vue'
 import FooterBar from '@/components/FooterBar.vue'
 import HomeSection from '@/components/HomeSection.vue'
 import AboutSection from '@/components/AboutSection.vue'
+import ExperienceSection from '@/components/ExperienceSection.vue'
 import ProjectSection from '@/components/ProjectSection.vue'
 
 import { useMeta } from 'vue-meta'
 
 useMeta({
-  title: 'Leonard Zonaphan - Software Engineer',
+  title: 'Leonard Zonaphan - AI Product Owner & Software Engineer',
   description:
-    'A recent Bina Nusantara University computer science graduate with experience on large-scale real-world projects as a software engineer at Blibli.com.',
+    'AI Product Owner & Process Automation at Astra TSO Auto2000: 4 GenAI initiatives and ~15 RPA solutions serving 127 branches. Software engineering background (Blibli, BINUS).',
   meta: [
     { name: 'robots', content: 'index, follow' },
-    { name: 'keywords', content: 'Leonard Zonaphan, Software Engineer, Bina Nusantara University' },
+    {
+      name: 'keywords',
+      content:
+        'Leonard Zonaphan, AI Product Owner, Software Engineer, GenAI, Process Automation, RPA, UiPath, Digital Transformation, Astra, Auto2000'
+    },
     { name: 'author', content: 'Leonard Zonaphan' }
   ],
   link: [
@@ -29,8 +34,18 @@ useMeta({
         '@context': 'http://schema.org',
         '@type': 'Person',
         name: 'Leonard Zonaphan',
-        jobTitle: 'Software Engineer',
+        jobTitle: 'AI Product Owner & Software Engineer',
         url: 'https://www.leonardzonaphan.com',
+        worksFor: { '@type': 'Organization', name: 'Astra TSO' },
+        knowsAbout: [
+          'AI Product Management',
+          'GenAI',
+          'Process Automation',
+          'RPA',
+          'UiPath',
+          'Software Development',
+          'Digital Transformation'
+        ],
         sameAs: ['https://www.linkedin.com/in/leonard-zonaphan/', 'https://github.com/Lezonn/']
       }
     }
@@ -40,9 +55,11 @@ useMeta({
 
 <template>
   <main>
+    <a class="skip-link" href="#about">Skip to content</a>
     <navigation-bar />
     <home-section />
     <about-section />
+    <experience-section />
     <project-section />
     <footer-bar />
     <metainfo>
@@ -50,5 +67,24 @@ useMeta({
     </metainfo>
   </main>
 </template>
+
+<style lang="scss" scoped>
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  padding: 0.75rem 1.25rem;
+  background: #0a2e29;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 12px 12px;
+  z-index: 2000;
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 0;
+  }
+}
+</style>
 
 <style lang="scss" scoped></style>
