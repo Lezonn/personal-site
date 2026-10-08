@@ -1,17 +1,13 @@
-<script setup>
-const currentYear = new Date().getFullYear()
-</script>
-
 <template>
   <footer id="contact" class="footer">
     <v-container class="footer_cta">
       <p class="footer_kicker">Let's talk</p>
       <h2 class="footer_cta_title">Let's build something <em>useful</em> together.</h2>
       <p class="footer_cta_text">
-        AI Product Owner &amp; Software Engineer — from GenAI products and process automation to
-        full-stack software. Open to product, automation, and engineering roles.
+        Zon Digital Solution builds practical business software — point-of-sale, automated
+        reporting, and digital loyalty programs. Tell us what you need.
       </p>
-      <a class="footer_cta_btn" href="mailto:lezonmail@gmail.com"> lezonmail@gmail.com </a>
+      <a class="footer_cta_btn" href="mailto:info@leonardzonaphan.com">info@leonardzonaphan.com</a>
       <div class="footer_cta_social">
         <a
           href="https://www.linkedin.com/in/leonard-zonaphan/"
@@ -28,10 +24,13 @@ const currentYear = new Date().getFullYear()
         <v-col cols="12" md="6" class="footer_brand">
           <p class="footer_brand_name">Leonard Zonaphan.</p>
           <p class="footer_sub">
-            AI Product Owner &amp; Software Engineer — RPA, process automation, and digital
-            transformation.
+            Founder of Zon Digital Solution · AI Product Owner &amp; Software Engineer — RPA,
+            process automation, and digital transformation.
           </p>
-          <p class="footer_copyright">© {{ currentYear }} Leonard Zonaphan • Jakarta</p>
+          <p class="footer_copyright">
+            © Zon Digital Solution ·
+            <a href="mailto:info@leonardzonaphan.com">info@leonardzonaphan.com</a>
+          </p>
         </v-col>
         <v-col cols="6" md="3" class="footer_col">
           <ul class="footer_list d-flex flex-column">
@@ -56,7 +55,7 @@ const currentYear = new Date().getFullYear()
           <ul class="footer_list d-flex flex-column">
             <li class="footer_list_heading">Contact</li>
             <li>
-              <a href="mailto:lezonmail@gmail.com"> lezonmail@gmail.com </a>
+              <a href="mailto:info@leonardzonaphan.com">info@leonardzonaphan.com</a>
             </li>
             <li>
               <a href="#home">Back to top ↑</a>
@@ -183,6 +182,13 @@ const currentYear = new Date().getFullYear()
     color: $--color-dark-light;
     font-size: $--font-mini;
     margin: 1rem 0 0;
+
+    a {
+      font-size: inherit;
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   }
 
   &_list {
