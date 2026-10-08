@@ -5,6 +5,19 @@ const root = useReveal()
 
 const roles = [
   {
+    period: 'Apr 2025 — Present',
+    category: 'Founder',
+    title: 'Founder',
+    company: 'Zon Digital Solution · Jakarta',
+    summary:
+      "Founded Zon Digital Solution in April 2025. Since May 2025 the company has built and maintained the point-of-sales system used across all The Men's Barbershop locations — transactions, customer data, stock, and employee performance.",
+    points: [
+      'Cut ~90% of manual work with automated daily financial and employee-performance reports',
+      'Digitalized the loyalty program into system-based membership'
+    ],
+    tags: ['POS System', 'Reporting', 'Loyalty Program', 'Claude Code']
+  },
+  {
     period: 'Nov 2025 — Present',
     category: 'AI · Product',
     title: 'AI Product Owner — Process Automation',
@@ -29,19 +42,6 @@ const roles = [
       'Shipped internal websites for HC & General Services: LMS, Auto2000 Innovation System, quarterly building maintenance report'
     ],
     tags: ['UiPath', 'Power BI', 'RPA', 'Web Apps']
-  },
-  {
-    period: 'May 2025 — Present',
-    category: 'Consulting',
-    title: 'IT Solution Consultant',
-    company: "The Men's Barbershop",
-    summary:
-      'Built and maintain the point-of-sales system used across all barbershop locations — transactions, customer data, stock, and employee performance.',
-    points: [
-      'Cut ~90% of manual work with automated daily financial and employee-performance reports',
-      'Digitalized the loyalty program into system-based membership'
-    ],
-    tags: ['POS System', 'Reporting', 'Loyalty Program']
   },
   {
     period: 'Feb 2023 — Feb 2024',
@@ -85,7 +85,7 @@ const roles = [
 <template>
   <section id="experience" ref="root" class="experience">
     <v-container class="experience_inner">
-      <p class="experience_kicker reveal">Experience</p>
+      <p class="experience_kicker reveal">Founder's career history</p>
       <h2 class="experience_heading reveal" style="transition-delay: 0.05s">
         From shipping code<br />to shipping <em>outcomes</em>.
       </h2>

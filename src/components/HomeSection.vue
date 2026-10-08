@@ -15,7 +15,7 @@ const root = useReveal()
     </div>
     <v-container class="home_inner">
       <div class="home_copy">
-        <p class="home_eyebrow reveal">AI Product Owner @ Astra TSO</p>
+        <p class="home_eyebrow reveal">Founder · Zon Digital Solution</p>
         <h1 class="home_title">
           <span class="home_title_name reveal" style="transition-delay: 0.05s">Hi. I'm Leo</span>
           <span class="home_title_role reveal" style="transition-delay: 0.15s">
@@ -23,13 +23,13 @@ const root = useReveal()
           </span>
         </h1>
         <p class="home_description reveal" style="transition-delay: 0.25s">
-          AI Product Owner &amp; Software Engineer — GenAI, RPA, and full-stack web apps, currently
-          driving digital transformation at Astra TSO Auto2000.
+          Founder of Zon Digital Solution, building practical business software. Also AI Product
+          Owner &amp; Software Engineer at Astra TSO Auto2000 — GenAI, RPA, and full-stack web apps.
         </p>
         <div class="home_actions d-flex flex-wrap reveal" style="transition-delay: 0.35s">
           <v-btn color="#0a2e29" class="home_actions_primary" href="#contact"> Get in touch </v-btn>
-          <v-btn variant="outlined" class="home_actions_secondary" href="#experience">
-            See my work
+          <v-btn variant="outlined" class="home_actions_secondary" href="#company">
+            See the company
           </v-btn>
         </div>
       </div>
