@@ -4,7 +4,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const isNavbarFloating = ref(false)
 const links = [
   { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
+  { label: 'Company', href: '#company' },
+  { label: 'Founder', href: '#about' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#project' },
   { label: 'Contact', href: '#contact' }
