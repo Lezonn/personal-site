@@ -6,7 +6,7 @@ This file provides context for AI assistants (and developers) working in this re
 
 ## Project Overview
 
-Personal site of Leonard Zonaphan and his company **Zon Digital Solution** (est. April 2025, Jakarta). It is a single-page application (SPA), prerendered to static HTML at build time and hydrated in the browser, deployed at **https://www.leonardzonaphan.com**.
+Personal portfolio site for Leonardo Zonaphan. It is a single-page application (SPA) deployed at **https://www.leonardzonaphan.com**.
 
 ---
 
@@ -36,16 +36,12 @@ personal-site/
 ├── jsconfig.json               # JS path aliases
 ├── .eslintrc.cjs               # ESLint config
 ├── .prettierrc.json            # Prettier config
-├── scripts/
-│   └── prerender.js            # Post-build: renders the app into dist/index.html
 ├── public/                     # Copied as-is to dist
 │   ├── favicon.ico
 │   ├── robots.txt
 │   └── sitemap.xml
 └── src/
-    ├── app.js                  # createApp() factory — Vue app + plugins (shared client/server)
-    ├── main.js                 # Browser entry — hydrates the prerendered HTML
-    ├── entry-server.js         # Build-time render entry used by scripts/prerender.js
+    ├── main.js                 # App entry point — creates Vue app, registers plugins
     ├── App.vue                 # Root component: section orchestration + SEO metadata
     ├── router/
     │   └── index.js            # Vue Router (single route '/')
@@ -56,10 +52,8 @@ personal-site/
     └── components/
         ├── NavigationBar.vue   # Fixed header with scroll-detection floating effect
         ├── HomeSection.vue     # Hero section (full-screen)
-        ├── CompanySection.vue  # Zon Digital Solution: what we build, products, contact
         ├── BubbleBackground.vue# Animated floating bubbles (spawns every 1s)
-        ├── AboutSection.vue    # Founder background (#about)
-        ├── ExperienceSection.vue # Founder's career history timeline
+        ├── AboutSection.vue    # About section
         ├── ProjectSection.vue  # Projects section
         └── FooterBar.vue       # Contact & social links (responsive)
 ```
@@ -70,7 +64,7 @@ personal-site/
 
 ```bash
 npm run dev       # Start Vite dev server with HMR
-npm run build     # Client build + SSR build + prerender → dist/
+npm run build     # Production build → dist/
 npm run preview   # Preview the production build locally
 npm run lint      # ESLint with auto-fix (respects .gitignore)
 npm run format    # Prettier format on src/
@@ -118,17 +112,8 @@ npm run format    # Prettier format on src/
 - Respects `document.visibilityState` — stops spawning when the tab is hidden.
 - Clean up the interval in `onUnmounted`.
 
-### Prerendering
-- `npm run build` renders the app to HTML (`vue/server-renderer`) and injects it into `dist/index.html`, so content is visible without JS.
-- Code that touches `window`/`document` must run in `onMounted` (or be guarded), never during setup.
-- `<metainfo>` renders only after mount (teleports into `<head>` can't hydrate); crawlers get the static tags in `index.html`.
-
-### Company vs. personal work
-- Only Zon Digital Solution work (The Men's Barbershop POS, since May 2025) is attributed to the company.
-- Astra TSO / Blibli / BINUS work and metrics are personal career history — never present them as company work.
-
 ### App.vue (SEO)
-- `vue-meta` is used here for `<title>`, meta description, Open Graph tags, and JSON-LD structured data (Organization + Person `@graph`). Keep it in sync with the static copy in `index.html`.
+- `vue-meta` is used here for `<title>`, meta description, Open Graph tags, and JSON-LD structured data (Person schema).
 - Update the structured data if contact details or social links change.
 
 ---

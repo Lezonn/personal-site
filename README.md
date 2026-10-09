@@ -19,6 +19,6 @@ This project contains the codebase for my personal website, showcasing my portfo
 
 ## Contact
 
-- Email: info@leonardzonaphan.com
+- Email: lezonmail@gmail.com
 - LinkedIn: [Leonard Zonaphan](https://www.linkedin.com/in/leonard-zonaphan/)
 - GitHub: [Lezonn](https://github.com/Lezonn/)

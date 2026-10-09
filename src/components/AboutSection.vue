@@ -32,14 +32,13 @@ const metrics = [
 <template>
   <section id="about" ref="root" class="about">
     <v-container class="about_inner">
-      <p class="about_kicker reveal">Founder</p>
+      <p class="about_kicker reveal">About</p>
       <h2 class="about_heading reveal" style="transition-delay: 0.05s">
         Engineer who speaks <em>operations</em>, owner who can <em>ship</em>.
       </h2>
       <p class="about_lede reveal" style="transition-delay: 0.1s">
-        I'm Leonard Zonaphan, founder of Zon Digital Solution. Alongside the company, my personal
-        career is as AI Product Owner for Process Automation at Astra TSO Auto2000, where I turn
-        field problems into shipped improvements and report impact up to C-level.
+        I'm Leonard Zonaphan — AI Product Owner for Process Automation at Astra TSO Auto2000. I turn
+        field problems into shipped improvements, reporting impact up to C-level.
       </p>
       <div class="about_focus">
         <article
@@ -55,7 +54,6 @@ const metrics = [
           </div>
         </article>
       </div>
-      <p class="about_metrics_caption reveal">Personal career highlights · Astra TSO Auto2000</p>
       <div class="about_metrics reveal">
         <div v-for="m in metrics" :key="m.label" class="about_metric">
           <span class="about_metric_value">{{ m.value }}</span>
@@ -157,16 +155,9 @@ const metrics = [
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem 0;
-    margin-top: 1rem;
-
-    &_caption {
-      margin: $--spacing-s 0 0;
-      font-size: $--font-mini;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: $--color-text-primary;
-    }
+    margin-top: $--spacing-s;
+    padding-top: $--spacing-s;
+    border-top: 1px solid rgba(10, 46, 41, 0.18);
   }
 
   &_metric {

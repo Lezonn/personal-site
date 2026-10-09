@@ -5,31 +5,17 @@ const root = useReveal()
 
 const projects = [
   {
-    title: "The Men's Barbershop POS",
-    owner: 'Zon Digital Solution · client project',
-    description:
-      'Point-of-sales across all shop locations with automated daily reports cutting ~90% of manual work, plus digital membership. Live since May 2025.',
-    tags: ['Full-stack', 'Automation', 'POS'],
-    // Client code is private — point to the company inbox instead
-    link: 'mailto:info@leonardzonaphan.com',
-    linkLabel: 'Ask us about it',
-    accent: '#e8b04b',
-    featured: true
-  },
-  {
     title: 'AI Product Owner @ Astra TSO',
-    owner: 'Personal career · Astra TSO',
     description:
       'Four GenAI initiatives owned end to end — AI recruitment screening, AI Virtual Assistant, AI Salesman Live Chat, and AI KV Generator — bridging business needs with IT vendors.',
     tags: ['AI Workflow', 'AI Products', 'Project Management'],
     link: 'https://www.linkedin.com/in/leonard-zonaphan/',
     linkLabel: 'More on LinkedIn',
-    accent: '#7a9ba8',
-    featured: false
+    accent: '#e8b04b',
+    featured: true
   },
   {
     title: 'RPA Across 127 Branches',
-    owner: 'Personal career · Astra TSO',
     description:
       '~15 production-grade RPA solutions automating reporting and third-party data collection for operational teams nationwide.',
     tags: ['UiPath', 'RPA', 'Power BI'],
@@ -39,8 +25,17 @@ const projects = [
     featured: false
   },
   {
+    title: 'Barbershop POS System',
+    description:
+      'Point-of-sales across all shop locations with automated daily reports cutting ~90% of manual work, plus digital membership.',
+    tags: ['Full-stack', 'Automation', 'POS'],
+    link: 'https://github.com/Lezonn',
+    linkLabel: 'Code on GitHub',
+    accent: '#7a9ba8',
+    featured: false
+  },
+  {
     title: 'SEO System @ Blibli',
-    owner: 'Personal career · Blibli',
     description:
       'Reactive Java Spring microservices plus Vue.js components with schema markup and meta-tag optimization, shipped through full SDLC.',
     tags: ['Java Spring', 'Vue.js', 'SEO'],
@@ -63,8 +58,7 @@ const projects = [
           </h2>
         </div>
         <p class="project_sub reveal" style="transition-delay: 0.1s">
-          Zon Digital Solution's client work, plus projects from my personal career at Astra and
-          Blibli — each tied to a real operational result.
+          Automation, AI product work, and engineering — each tied to a real operational result.
         </p>
       </div>
       <div class="project_grid">
@@ -79,17 +73,11 @@ const projects = [
             {{ String(i + 1).padStart(2, '0') }}
           </span>
           <h3>{{ item.title }}</h3>
-          <p class="project_owner">{{ item.owner }}</p>
           <p>{{ item.description }}</p>
           <div class="project_tags">
             <span v-for="tag in item.tags" :key="tag" class="project_tag">{{ tag }}</span>
           </div>
-          <a
-            :href="item.link"
-            :target="item.link.startsWith('http') ? '_blank' : undefined"
-            rel="noopener noreferrer"
-            class="project_link"
-          >
+          <a :href="item.link" target="_blank" rel="noopener noreferrer" class="project_link">
             {{ item.linkLabel }} <span aria-hidden="true">→</span>
           </a>
         </article>
@@ -185,15 +173,6 @@ const projects = [
       color: $--color-dark-light;
       font-size: $--font-link;
     }
-
-    .project_owner {
-      margin: 0 0 0.5rem;
-      font-size: $--font-mini;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: $--color-text-primary;
-    }
   }
 
   &_index {
@@ -264,7 +243,6 @@ const projects = [
     }
 
     p,
-    .project_owner,
     .project_tags {
       grid-column: 2;
     }
