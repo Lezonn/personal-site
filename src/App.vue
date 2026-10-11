@@ -66,7 +66,7 @@ useMeta({
         image: 'https://www.leonardzonaphan.com/og-image.png',
         worksFor: { '@type': 'Organization', name: 'Astra TSO' },
         alumniOf: { '@type': 'CollegeOrUniversity', name: 'BINUS University' },
-        email: 'mailto:lezonmail@gmail.com',
+        email: 'mailto:info@leonardzonaphan.com',
         knowsLanguage: ['id', 'en'],
         address: { '@type': 'PostalAddress', addressLocality: 'Jakarta', addressCountry: 'ID' },
         knowsAbout: [
