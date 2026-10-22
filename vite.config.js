@@ -16,9 +16,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vue: ['vue', 'vue-router', 'pinia'],
-          vuetify: ['vuetify']
+        manualChunks(id) {
+          if (/node_modules\/vuetify\//.test(id)) return 'vuetify'
+          if (/node_modules\/(@vue|vue|vue-router|pinia)\//.test(id)) return 'vue'
         }
       }
     }
