@@ -11,7 +11,7 @@ const currentYear = new Date().getFullYear()
         AI Product Owner &amp; Software Engineer — from GenAI products and process automation to
         full-stack software. Open to product, automation, and engineering roles.
       </p>
-      <a class="footer_cta_btn" href="mailto:lezonmail@gmail.com"> lezonmail@gmail.com </a>
+      <a class="footer_cta_btn" href="mailto:info@leonardzonaphan.com"> info@leonardzonaphan.com </a>
       <div class="footer_cta_social">
         <a
           href="https://www.linkedin.com/in/leonard-zonaphan/"
@@ -56,7 +56,7 @@ const currentYear = new Date().getFullYear()
           <ul class="footer_list d-flex flex-column">
             <li class="footer_list_heading">Contact</li>
             <li>
-              <a href="mailto:lezonmail@gmail.com"> lezonmail@gmail.com </a>
+              <a href="mailto:info@leonardzonaphan.com"> info@leonardzonaphan.com </a>
             </li>
             <li>
               <a href="#home">Back to top ↑</a>
