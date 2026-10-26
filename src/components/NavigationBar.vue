@@ -4,9 +4,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const isNavbarFloating = ref(false)
 const links = [
   { label: 'Home', href: '#home' },
+  { label: 'Journey', href: '#journey' },
   { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#project' },
   { label: 'Contact', href: '#contact' }
 ]
 
@@ -56,7 +55,7 @@ nav {
   a {
     font-weight: 600;
     position: relative;
-    color: $--color-dark-light;
+    color: $--color-cream;
     margin: $--spacing-xxs;
     padding: 0.35rem $--spacing-xxs;
     white-space: nowrap;
@@ -68,7 +67,7 @@ nav {
       bottom: 2px;
       width: 100%;
       height: 2px;
-      background: rgba(7, 90, 78, 0.6);
+      background: $--color-accent;
       border-radius: 2px;
       transform: scaleX(0);
       transition: transform 0.3s ease;
@@ -82,7 +81,7 @@ nav {
     }
 
     &:focus-visible {
-      outline: 2px solid $--color-text-primary;
+      outline: 2px solid $--color-accent;
       outline-offset: 3px;
       border-radius: 6px;
     }
@@ -90,10 +89,11 @@ nav {
 }
 
 .navbar-floating {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(6, 27, 24, 0.7);
+  border: 1px solid $--color-line;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  box-shadow: 0 8px 30px rgba(51, 51, 51, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 560px) {

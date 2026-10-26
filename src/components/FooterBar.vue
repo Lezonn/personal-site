@@ -11,7 +11,9 @@ const currentYear = new Date().getFullYear()
         AI Product Owner &amp; Software Engineer — from GenAI products and process automation to
         full-stack software. Open to product, automation, and engineering roles.
       </p>
-      <a class="footer_cta_btn" href="mailto:info@leonardzonaphan.com"> info@leonardzonaphan.com </a>
+      <a class="footer_cta_btn" href="mailto:info@leonardzonaphan.com">
+        info@leonardzonaphan.com
+      </a>
       <div class="footer_cta_social">
         <a
           href="https://www.linkedin.com/in/leonard-zonaphan/"
@@ -74,8 +76,8 @@ const currentYear = new Date().getFullYear()
 
 .footer {
   position: relative;
-  background-color: $--color-background-secondary;
-  border-top: 1px solid rgba(7, 90, 78, 0.12);
+  background-color: $--color-bg;
+  border-top: 1px solid rgba(242, 236, 221, 0.1);
   padding: $--spacing-l 0 0;
   overflow: hidden;
 
@@ -84,7 +86,7 @@ const currentYear = new Date().getFullYear()
     text-align: center;
     padding: $--spacing-l 1rem $--spacing-l;
     margin-bottom: $--spacing-l;
-    border-bottom: 1px solid rgba(10, 46, 41, 0.18);
+    border-bottom: 1px solid rgba(242, 236, 221, 0.14);
   }
 
   &_kicker {
@@ -92,7 +94,7 @@ const currentYear = new Date().getFullYear()
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: $--color-text-primary;
+    color: $--color-accent;
     margin-bottom: 0.5rem;
   }
 
@@ -102,7 +104,7 @@ const currentYear = new Date().getFullYear()
     line-height: 1.1;
     letter-spacing: -0.01em;
     text-wrap: balance;
-    color: $--color-dark;
+    color: $--color-cream;
     margin: 0;
 
     em {
@@ -115,7 +117,7 @@ const currentYear = new Date().getFullYear()
   &_cta_text {
     max-width: 540px;
     margin: $--spacing-s auto $--spacing-s;
-    color: $--color-dark-light;
+    color: $--color-cream-dim;
   }
 
   &_cta_btn {
@@ -124,15 +126,15 @@ const currentYear = new Date().getFullYear()
     min-height: 48px;
     padding: 0 1.75rem;
     border-radius: 999px;
-    background: $--color-ink;
-    color: $--color-cream;
+    background: $--color-accent;
+    color: $--color-ink;
     font-weight: 700;
     transition:
       transform 0.2s ease,
       background 0.2s ease;
 
     &:hover {
-      background: $--color-text-primary;
+      background: $--color-cream;
       transform: translateY(-2px);
     }
   }
@@ -148,10 +150,10 @@ const currentYear = new Date().getFullYear()
       min-height: 44px;
       display: inline-flex;
       align-items: center;
-      color: $--color-dark-light;
+      color: $--color-cream-dim;
 
       &:hover {
-        color: $--color-text-primary;
+        color: $--color-accent;
       }
     }
   }
@@ -168,19 +170,19 @@ const currentYear = new Date().getFullYear()
   &_brand_name {
     font-family: $--title-font;
     font-size: $--font-h3;
-    color: $--color-dark;
+    color: $--color-cream;
     margin: 0;
   }
 
   &_sub {
-    color: $--color-dark-light;
+    color: $--color-cream-dim;
     font-size: $--font-link;
     max-width: 380px;
     margin: 0.5rem 0 0;
   }
 
   &_copyright {
-    color: $--color-dark-light;
+    color: $--color-cream-dim;
     font-size: $--font-mini;
     margin: 1rem 0 0;
   }
@@ -190,7 +192,7 @@ const currentYear = new Date().getFullYear()
     margin: 0;
 
     &_heading {
-      color: $--color-text-primary;
+      color: $--color-accent;
       font-weight: 600;
     }
 
@@ -204,10 +206,10 @@ const currentYear = new Date().getFullYear()
         padding: 0.25rem 0.35rem;
         margin-left: -0.35rem;
         border-radius: 8px;
-        color: $--color-dark-light;
+        color: $--color-cream-dim;
 
         &:hover {
-          color: $--color-text-primary;
+          color: $--color-accent;
         }
       }
     }
@@ -221,7 +223,7 @@ const currentYear = new Date().getFullYear()
     text-align: center;
     letter-spacing: 0.02em;
     color: transparent;
-    -webkit-text-stroke: 1.5px rgba(10, 46, 41, 0.28);
+    -webkit-text-stroke: 1.5px rgba(242, 236, 221, 0.16);
     user-select: none;
     margin-top: $--spacing-s;
     transform: translateY(0.12em);

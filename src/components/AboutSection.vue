@@ -68,7 +68,7 @@ const metrics = [
 @import '@/assets/styles/variables';
 
 .about {
-  background-color: $--color-background-secondary;
+  background-color: $--color-bg;
   padding: $--spacing-xl 0;
   overflow: hidden;
 
@@ -81,7 +81,7 @@ const metrics = [
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: $--color-text-primary;
+    color: $--color-accent;
     margin-bottom: 0.5rem;
   }
 
@@ -91,7 +91,7 @@ const metrics = [
     line-height: 1.05;
     letter-spacing: -0.01em;
     text-wrap: balance;
-    color: $--color-dark;
+    color: $--color-cream;
     max-width: 760px;
     margin: 0;
 
@@ -107,12 +107,12 @@ const metrics = [
     margin: $--spacing-s 0 0;
     font-size: $--font-h6;
     line-height: 1.65;
-    color: $--color-dark-light;
+    color: $--color-cream-dim;
   }
 
   &_focus {
     margin-top: $--spacing-s;
-    border-top: 2px solid $--color-ink;
+    border-top: 1px solid rgba(242, 236, 221, 0.3);
   }
 
   &_row {
@@ -121,13 +121,13 @@ const metrics = [
     gap: 1.25rem;
     align-items: baseline;
     padding: 1.25rem 0.5rem;
-    border-bottom: 1px solid rgba(10, 46, 41, 0.18);
+    border-bottom: 1px solid rgba(242, 236, 221, 0.14);
     transition:
       background 0.25s ease,
       padding 0.25s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(242, 236, 221, 0.04);
       padding-left: 1rem;
     }
 
@@ -140,14 +140,14 @@ const metrics = [
 
     h3 {
       font-size: $--font-h5;
-      color: $--color-dark;
+      color: $--color-cream;
       margin: 0 0 0.25rem;
     }
 
     p {
       margin: 0;
       font-size: $--font-link;
-      color: $--color-dark-light;
+      color: $--color-cream-dim;
     }
   }
 
@@ -157,7 +157,7 @@ const metrics = [
     gap: 1.5rem 0;
     margin-top: $--spacing-s;
     padding-top: $--spacing-s;
-    border-top: 1px solid rgba(10, 46, 41, 0.18);
+    border-top: 1px solid rgba(242, 236, 221, 0.14);
   }
 
   &_metric {
@@ -169,14 +169,14 @@ const metrics = [
       font-family: $--title-font;
       font-size: $--font-h3;
       line-height: 1;
-      color: $--color-ink;
+      color: $--color-cream;
     }
 
     &_label {
       display: block;
       margin-top: 0.25rem;
       font-size: $--font-mini;
-      color: $--color-dark-light;
+      color: $--color-cream-dim;
     }
   }
 }

@@ -1,17 +1,15 @@
 <script setup>
 import NavigationBar from '@/components/NavigationBar.vue'
 import FooterBar from '@/components/FooterBar.vue'
-import HomeSection from '@/components/HomeSection.vue'
+import JourneyWorld from '@/components/JourneyWorld.vue'
 import AboutSection from '@/components/AboutSection.vue'
-import ExperienceSection from '@/components/ExperienceSection.vue'
-import ProjectSection from '@/components/ProjectSection.vue'
 
 import { useMeta } from 'vue-meta'
 
 useMeta({
   title: 'Leonard Zonaphan - AI Product Owner & Software Engineer',
   description:
-    'AI Product Owner & Process Automation at Astra TSO Auto2000: 4 GenAI initiatives and ~15 RPA solutions serving 127 branches. Software engineering background (Blibli, BINUS).',
+    'AI-enable your idea. AI Product Owner & Process Automation at Astra TSO Auto2000: 4 GenAI initiatives and ~15 RPA solutions serving 127 branches. Ride through the journey in 3D.',
   meta: [
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'Leonard Zonaphan' },
@@ -20,7 +18,7 @@ useMeta({
     {
       property: 'og:description',
       content:
-        'AI Product Owner & Process Automation at Astra TSO. 4 GenAI initiatives, ~15 RPA solutions across 127 branches. Software engineering background (Blibli, BINUS).'
+        'AI-enable your idea. AI Product Owner at Astra TSO: 4 GenAI initiatives, ~15 RPA solutions across 127 branches. Take the 3D ride through the journey.'
     },
     { property: 'og:type', content: 'profile' },
     { property: 'og:locale', content: 'en_US' },
@@ -30,9 +28,12 @@ useMeta({
     { property: 'og:image:type', content: 'image/png' },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
-    { property: 'og:image:alt', content: 'Leonard Zonaphan — AI Product Owner & Software Engineer' },
+    { property: 'og:image:alt', content: 'Leonard Zonaphan — AI-enable your idea' },
     { property: 'og:image', content: 'https://www.leonardzonaphan.com/og-image-600x315.png' },
-    { property: 'og:image:secure_url', content: 'https://www.leonardzonaphan.com/og-image-600x315.png' },
+    {
+      property: 'og:image:secure_url',
+      content: 'https://www.leonardzonaphan.com/og-image-600x315.png'
+    },
     { property: 'og:image:type', content: 'image/png' },
     { property: 'og:image:width', content: '600' },
     { property: 'og:image:height', content: '315' },
@@ -42,7 +43,8 @@ useMeta({
     { name: 'twitter:title', content: 'Leonard Zonaphan - AI Product Owner & Software Engineer' },
     {
       name: 'twitter:description',
-      content: 'AI Product Owner & Process Automation at Astra TSO. 4 GenAI initiatives, ~15 RPA solutions across 127 branches.'
+      content:
+        'AI-enable your idea. AI Product Owner at Astra TSO: 4 GenAI initiatives, ~15 RPA solutions across 127 branches.'
     },
     { name: 'twitter:image', content: 'https://www.leonardzonaphan.com/og-image.png' }
   ],
@@ -89,10 +91,8 @@ useMeta({
   <main>
     <a class="skip-link" href="#about">Skip to content</a>
     <navigation-bar />
-    <home-section />
+    <journey-world />
     <about-section />
-    <experience-section />
-    <project-section />
     <footer-bar />
     <metainfo>
       <template v-slot:title="{ content }">{{ content }}</template>
@@ -106,8 +106,8 @@ useMeta({
   left: 1rem;
   top: -100px;
   padding: 0.75rem 1.25rem;
-  background: #0a2e29;
-  color: #fff;
+  background: #e8b04b;
+  color: #0a2e29;
   font-weight: 600;
   border-radius: 0 0 12px 12px;
   z-index: 2000;
@@ -118,5 +118,3 @@ useMeta({
   }
 }
 </style>
-
-<style lang="scss" scoped></style>

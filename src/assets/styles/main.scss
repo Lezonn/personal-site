@@ -2,10 +2,18 @@
 
 :root {
   font-family: $--body-font;
+  color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+  background: $--color-bg;
+}
+
+body {
+  background: $--color-bg;
+  color: $--color-cream;
 }
 
 section[id] {
@@ -13,29 +21,8 @@ section[id] {
 }
 
 ::selection {
-  background: rgba(7, 90, 78, 0.2);
-}
-
-// scroll-reveal: elements fade + rise into place (see useReveal.js)
-.reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+  background: rgba(232, 176, 75, 0.35);
+  color: #fff;
 }
 
 li {
@@ -51,58 +38,40 @@ a {
   text-decoration: none;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 72px;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
+// scroll-reveal: elements fade + rise into place (see useReveal.js)
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(26px);
   transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 
   &.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
-.reveal--left {
-  opacity: 0;
-  transform: translateX(-32px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-  &.is-visible {
+  .reveal {
     opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@for $i from 1 through 8 {
-  .reveal-delay-#{$i} {
-    transition-delay: #{$i * 0.1}s;
-  }
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: $--spacing-l;
-
-  &__title {
-    font-family: $--title-font;
-    font-size: $--font-h2;
-    color: $--color-dark;
-  }
-
-  &__line {
-    width: 48px;
-    height: 3px;
-    background: $--color-text-primary;
-    margin: 8px auto 0;
-    border-radius: 2px;
+    transform: none;
+    transition: none;
   }
 }

@@ -1,50 +1,45 @@
 <script setup>
 import BubbleBackground from './BubbleBackground.vue'
-import { useReveal } from '@/composables/useReveal'
 import leoImg from '@/assets/leo.webp'
 
-const root = useReveal()
+defineProps({
+  staticMode: { type: Boolean, default: false }
+})
 </script>
 
 <template>
-  <section id="home" ref="root" class="home">
-    <div class="home_aurora" aria-hidden="true">
-      <span class="home_blob home_blob_a" aria-hidden="true" />
-      <span class="home_blob home_blob_b" aria-hidden="true" />
-      <span class="home_blob home_blob_c" aria-hidden="true" />
-    </div>
-    <v-container class="home_inner">
-      <div class="home_copy">
-        <p class="home_eyebrow reveal">AI Product Owner @ Astra TSO</p>
-        <h1 class="home_title">
-          <span class="home_title_name reveal" style="transition-delay: 0.05s">Hi. I'm Leo</span>
-          <span class="home_title_role reveal" style="transition-delay: 0.15s">
-            I turn <em>messy processes</em> into products people use.
-          </span>
-        </h1>
-        <p class="home_description reveal" style="transition-delay: 0.25s">
-          AI Product Owner &amp; Software Engineer — GenAI, RPA, and full-stack web apps, currently
-          driving digital transformation at Astra TSO Auto2000.
-        </p>
-        <div class="home_actions d-flex flex-wrap reveal" style="transition-delay: 0.35s">
-          <v-btn color="#0a2e29" class="home_actions_primary" href="#contact"> Get in touch </v-btn>
-          <v-btn variant="outlined" class="home_actions_secondary" href="#experience">
-            See my work
-          </v-btn>
-        </div>
-      </div>
-      <div class="home_portrait reveal" style="transition-delay: 0.2s">
+  <section id="home" class="home" :class="{ 'home--static': staticMode }">
+    <bubble-background v-if="staticMode" />
+    <div class="home_copy">
+      <p class="home_eyebrow">AI Product Owner @ Astra TSO</p>
+      <h1 class="home_title">AI-enable <em>your idea.</em></h1>
+      <p class="home_intro">
         <img
           :src="leoImg"
-          class="home_portrait_img"
-          alt="Portrait of Leonard Zonaphan"
-          width="900"
-          height="1200"
+          class="home_avatar"
+          alt="Leonard Zonaphan"
+          width="56"
+          height="56"
           fetchpriority="high"
         />
+        <span>
+          Hi, I'm Leo — AI Product Owner. I turn ideas and messy processes into AI products people
+          actually use.
+        </span>
+      </p>
+      <div class="home_actions d-flex flex-wrap">
+        <v-btn color="#e8b04b" class="home_actions_primary" href="#journey">
+          Start the ride ↓
+        </v-btn>
+        <v-btn variant="outlined" class="home_actions_secondary" href="#contact">
+          Get in touch
+        </v-btn>
       </div>
-    </v-container>
-    <bubble-background />
+    </div>
+    <a v-if="!staticMode" class="home_cue" href="#journey">
+      <span class="home_cue_mouse" aria-hidden="true" />
+      Scroll to start the ride
+    </a>
   </section>
 </template>
 
@@ -53,69 +48,36 @@ const root = useReveal()
 
 .home {
   position: relative;
-  overflow: hidden;
-  background: linear-gradient(
-    to bottom,
-    $--color-background-primary,
-    $--color-background-secondary
-  );
+  min-height: 100vh;
+  min-height: 100lvh;
+  display: flex;
+  align-items: center;
+  padding: 6.5rem clamp(1rem, 6vw, 5rem) 5rem;
 
-  &_aurora {
+  // keep the copy readable over the 3D world
+  &::before {
+    content: '';
     position: absolute;
     inset: 0;
-    overflow: hidden;
+    background: linear-gradient(
+      100deg,
+      rgba(3, 17, 15, 0.82) 0%,
+      rgba(3, 17, 15, 0.45) 38%,
+      transparent 62%
+    );
     pointer-events: none;
   }
 
-  &_blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.55;
-    animation: drift 14s ease-in-out infinite alternate;
-  }
-
-  &_blob_a {
-    width: 44vmax;
-    height: 44vmax;
-    left: -12vmax;
-    top: -10vmax;
-    background: radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0) 70%);
-  }
-
-  &_blob_b {
-    width: 38vmax;
-    height: 38vmax;
-    right: -10vmax;
-    top: 12vh;
-    background: radial-gradient(circle, rgba(7, 90, 78, 0.35) 0%, rgba(7, 90, 78, 0) 70%);
-    animation-delay: -5s;
-  }
-
-  &_blob_c {
-    width: 30vmax;
-    height: 30vmax;
-    left: 30vw;
-    bottom: 6vh;
-    background: radial-gradient(circle, rgba(232, 176, 75, 0.4) 0%, rgba(232, 176, 75, 0) 70%);
-    animation-delay: -9s;
-  }
-
-  &_inner {
-    position: relative;
-    z-index: 1;
-    min-height: 100svh;
-    max-width: 1160px;
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    gap: $--spacing-m;
-    padding-top: $--spacing-xl;
-    padding-bottom: $--spacing-l;
+  &--static {
+    overflow: hidden;
+    background: radial-gradient(50vmax 40vmax at 85% 20%, rgba(232, 176, 75, 0.18), transparent 60%),
+      radial-gradient(60vmax 50vmax at 0% 100%, rgba(7, 90, 78, 0.55), transparent 60%), $--color-bg;
   }
 
   &_copy {
-    max-width: 620px;
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
   }
 
   &_eyebrow {
@@ -124,49 +86,50 @@ const root = useReveal()
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: $--color-cream;
-    background: $--color-ink;
+    color: $--color-ink;
+    background: $--color-cream;
     border-radius: 999px;
-    padding: 0.45rem 1.1rem;
+    padding: 0.4rem 1rem;
     margin-bottom: $--spacing-xs;
-    box-shadow: 0 10px 30px rgba(10, 46, 41, 0.25);
   }
 
   &_title {
+    font-family: $--title-font;
+    font-size: clamp(3rem, 1.4rem + 6vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: $--color-cream;
     margin: 0;
+    text-wrap: balance;
 
-    &_name {
-      display: block;
-      font-family: $--title-font;
-      font-size: clamp(3rem, 1.2rem + 6vw, 7rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: $--color-text-primary;
-    }
-
-    &_role {
-      display: block;
-      margin: 1rem 0 0;
-      max-width: 720px;
-      font-family: $--body-font;
-      font-size: $--font-h3;
-      font-weight: 500;
-      line-height: 1.3;
-      color: $--color-dark;
-      text-wrap: balance;
-
-      em {
-        font-style: normal;
-        background: linear-gradient(transparent 62%, rgba(232, 176, 75, 0.65) 62%);
-        padding: 0 0.1em;
-      }
+    em {
+      font-style: normal;
+      color: $--color-accent;
+      text-shadow: 0 0 40px rgba(242, 184, 79, 0.35);
     }
   }
 
-  &_description {
-    max-width: 600px;
-    margin-top: $--spacing-s;
-    color: $--color-dark-light;
+  &_intro {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    max-width: 560px;
+    margin: $--spacing-s 0 0;
+    font-size: $--font-h6;
+    line-height: 1.55;
+    color: $--color-cream-dim;
+  }
+
+  &_avatar {
+    flex: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 12%;
+    background: $--color-bg-raised;
+    border: 2px solid $--color-accent;
+    box-shadow: 0 0 0 5px rgba(232, 176, 75, 0.15);
   }
 
   &_actions {
@@ -181,114 +144,109 @@ const root = useReveal()
     &_primary,
     &_secondary {
       text-transform: none;
-      font-weight: 600;
+      letter-spacing: 0;
+      font-weight: 700;
       border-radius: 999px;
       padding: 0 1.6rem;
     }
 
+    &_primary {
+      color: $--color-ink !important;
+    }
+
     &_secondary {
-      border-color: $--color-ink;
-      color: $--color-ink;
+      border-color: rgba(242, 236, 221, 0.5);
+      color: $--color-cream;
     }
   }
 
-  &_portrait {
-    position: relative;
-    justify-self: center;
-    align-self: center;
-    width: 100%;
-    max-width: 280px;
-    margin-top: 0.75rem;
+  &_cue {
+    position: absolute;
+    left: 50%;
+    bottom: 1.75rem;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: $--font-mini;
+    font-weight: 600;
+    color: $--color-cream-dim;
+    z-index: 1;
 
-    // soft glow behind the subject so the cut-out sits on a surface
+    &_mouse {
+      width: 22px;
+      height: 34px;
+      border: 2px solid currentColor;
+      border-radius: 12px;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 6px;
+        width: 4px;
+        height: 7px;
+        margin-left: -2px;
+        border-radius: 2px;
+        background: $--color-accent;
+        animation: cue 1.8s ease-in-out infinite;
+      }
+    }
+  }
+}
+
+@media (max-aspect-ratio: 9/10) {
+  .home {
+    align-items: flex-start;
+    padding-top: 6rem;
+
     &::before {
-      content: '';
-      position: absolute;
-      inset: 12% 4% 4%;
-      background: radial-gradient(
-        50% 50% at 50% 45%,
-        rgba(255, 255, 255, 0.6),
-        rgba(7, 90, 78, 0.12) 60%,
-        transparent 75%
+      background: linear-gradient(
+        180deg,
+        rgba(3, 17, 15, 0.85) 0%,
+        rgba(3, 17, 15, 0.5) 42%,
+        transparent 62%
       );
-      filter: blur(10px);
-      z-index: -1;
+    }
+
+    &--static {
+      align-items: center;
     }
   }
-
-  &_portrait_img {
-    display: block;
-    width: 100%;
-    height: auto;
-    // melt the bottom into the aurora
-    mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
-  }
 }
 
-@media (min-width: 1100px) {
-  .home_inner {
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: $--spacing-l;
-  }
-
-  .home_portrait {
-    max-width: 400px;
-    margin-top: 0;
-    justify-self: end;
-  }
-}
-
-@media (max-width: 1099px) {
-  .home_inner {
-    // always clear the fixed navbar on small screens (nav ~66px)
-    padding-top: max($--spacing-xl, 5.5rem);
-    // keep copy + portrait packed together (don't stretch rows across a tall viewport)
-    align-content: start;
-    // center the text block & portrait on the page in stacked layout
-    justify-items: center;
-    // don't force a giant 100svh fill on tall viewports (e.g. desktop-site-on-mobile);
-    // let the hero size to its content instead of leaving a huge empty gap below
-    min-height: max-content;
-  }
-
+@media (max-width: 560px) {
   .home_eyebrow {
     font-size: 0.72rem;
-    letter-spacing: 0.06em;
     padding: 0.32rem 0.85rem;
-    margin-bottom: 0.8rem;
   }
 
-  .home_copy {
-    text-align: center;
+  .home_intro {
+    font-size: $--font-mini;
   }
 
-  .home_description {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .home_actions {
-    justify-content: center;
-  }
-
-  .home_title_role {
-    margin-left: auto;
-    margin-right: auto;
+  .home_avatar {
+    width: 46px;
+    height: 46px;
   }
 }
 
-@keyframes drift {
-  from {
-    transform: translate(0, 0) scale(1);
+@keyframes cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  to {
-    transform: translate(4vmax, 3vmax) scale(1.12);
+  60% {
+    transform: translateY(9px);
+    opacity: 0.2;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home_blob {
+  .home_cue_mouse::after {
     animation: none;
   }
 }

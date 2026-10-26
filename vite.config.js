@@ -14,6 +14,8 @@ export default defineConfig({
     }
   },
   build: {
+    // three.js lives in the lazy-loaded journey chunk (~145 kB gzip), never on the critical path
+    chunkSizeWarningLimit: 650,
     rollupOptions: {
       output: {
         manualChunks(id) {

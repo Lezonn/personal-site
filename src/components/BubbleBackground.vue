@@ -80,10 +80,11 @@ onUnmounted(() => {
 
 .bubble {
   position: absolute;
-  opacity: 0.5;
+  opacity: 0.45;
   border-radius: 50%;
   bottom: -60px;
-  background: radial-gradient($--color-background-secondary, $--color-background-primary);
+  background: radial-gradient(rgba(242, 236, 221, 0.4), rgba(127, 220, 196, 0.06) 70%);
+  border: 1px solid rgba(242, 236, 221, 0.18);
   animation-name: floatUp;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
