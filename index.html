@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a2e29" />
+    <meta name="theme-color" content="#061b18" />
     <!-- Static SEO fallback for no-JS scrapers/crawlers (mirrors vue-meta in src/App.vue) -->
     <title>Leonard Zonaphan - AI Product Owner &amp; Software Engineer</title>
     <meta
       name="description"
-      content="AI Product Owner &amp; Process Automation at Astra TSO Auto2000: 4 GenAI initiatives and ~15 RPA solutions serving 127 branches. Software engineering background (Blibli, BINUS)."
+      content="AI-enable your idea. AI Product Owner &amp; Process Automation at Astra TSO Auto2000: 4 GenAI initiatives and ~15 RPA solutions serving 127 branches. Ride through the journey in 3D."
     />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Leonard Zonaphan" />
     <meta property="og:title" content="Leonard Zonaphan - AI Product Owner &amp; Software Engineer" />
     <meta
       property="og:description"
-      content="AI Product Owner &amp; Process Automation at Astra TSO. 4 GenAI initiatives, ~15 RPA solutions across 127 branches. Software engineering background (Blibli, BINUS)."
+      content="AI-enable your idea. AI Product Owner at Astra TSO: 4 GenAI initiatives, ~15 RPA solutions across 127 branches. Take the 3D ride through the journey."
     />
     <meta property="og:type" content="profile" />
     <meta property="og:locale" content="en_US" />
@@ -25,7 +25,7 @@
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Leonard Zonaphan — AI Product Owner &amp; Software Engineer" />
+    <meta property="og:image:alt" content="Leonard Zonaphan — AI-enable your idea" />
     <meta property="og:image" content="https://www.leonardzonaphan.com/og-image-600x315.png" />
     <meta property="og:image:secure_url" content="https://www.leonardzonaphan.com/og-image-600x315.png" />
     <meta property="og:image:type" content="image/png" />
@@ -36,7 +36,7 @@
     <meta name="twitter:title" content="Leonard Zonaphan - AI Product Owner &amp; Software Engineer" />
     <meta
       name="twitter:description"
-      content="AI Product Owner &amp; Process Automation at Astra TSO. 4 GenAI initiatives, ~15 RPA solutions across 127 branches."
+      content="AI-enable your idea. AI Product Owner at Astra TSO: 4 GenAI initiatives, ~15 RPA solutions across 127 branches."
     />
     <meta name="twitter:image" content="https://www.leonardzonaphan.com/og-image.png" />
     <link rel="canonical" href="https://www.leonardzonaphan.com" />
@@ -70,6 +70,21 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="/src/assets/styles/main.scss" rel="stylesheet" />
+    <!-- hero poster (pre-rendered opening shot) shown until the 3D scene wakes up -->
+    <link
+      rel="preload"
+      as="image"
+      href="/journey/overview-wide.webp"
+      media="(min-aspect-ratio: 9/10)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/journey/overview-tall.webp"
+      media="(max-aspect-ratio: 9/10)"
+      fetchpriority="high"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -90,7 +105,7 @@
       </p>
       <nav aria-label="Site">
         <a href="#about">About</a>
-        <a href="#project">Projects</a>
+        <a href="#journey">Journey</a>
         <a href="https://www.linkedin.com/in/leonard-zonaphan/" rel="me noopener noreferrer">LinkedIn</a>
         <a href="https://github.com/Lezonn/" rel="me noopener noreferrer">GitHub</a>
       </nav>

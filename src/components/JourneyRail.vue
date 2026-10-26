@@ -177,6 +177,7 @@ defineProps({
     &_list {
       flex-direction: row;
       padding: 0.2rem 0.5rem;
+      background: rgba(6, 27, 24, 0.88);
     }
 
     &_stop {
@@ -190,6 +191,7 @@ defineProps({
     }
 
     &_skip {
+      background: rgba(6, 27, 24, 0.88);
       font-size: 0.74rem;
       min-height: 34px;
       padding: 0.3rem 0.75rem;

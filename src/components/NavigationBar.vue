@@ -24,7 +24,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="d-flex justify-center position-fixed w-100">
+  <header>
     <nav :class="{ 'navbar-floating': isNavbarFloating }" aria-label="Primary">
       <a v-for="link in links" :key="link.href" :href="link.href">
         {{ link.label }}
@@ -37,6 +37,12 @@ onUnmounted(() => {
 @import '@/assets/styles/variables';
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   z-index: 1000;
   pointer-events: none;
 }

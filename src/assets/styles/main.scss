@@ -1,5 +1,31 @@
 @import './variables.scss';
 
+// ---------- reset (ress-style: zero margins, border-box) ----------
+
+html {
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  background-repeat: no-repeat;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   font-family: $--body-font;
   color-scheme: dark;
@@ -9,6 +35,14 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 72px;
   background: $--color-bg;
+}
+
+// centered content column; components set their own max-width
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px;
 }
 
 body {

@@ -4,9 +4,9 @@ const currentYear = new Date().getFullYear()
 
 <template>
   <footer id="contact" class="footer">
-    <v-container class="footer_cta">
+    <div class="container footer_cta">
       <p class="footer_kicker">Let's talk</p>
-      <h2 class="footer_cta_title">Let's build something <em>useful</em> together.</h2>
+      <h2 class="footer_cta_title">Got an idea? Let's <em>AI-enable</em> it.</h2>
       <p class="footer_cta_text">
         AI Product Owner &amp; Software Engineer — from GenAI products and process automation to
         full-stack software. Open to product, automation, and engineering roles.
@@ -24,19 +24,19 @@ const currentYear = new Date().getFullYear()
         </a>
         <a href="https://github.com/Lezonn" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
-    </v-container>
-    <v-container fluid class="footer_inner">
-      <v-row no-gutters class="footer_grid">
-        <v-col cols="12" md="6" class="footer_brand">
+    </div>
+    <div class="container footer_inner">
+      <div class="footer_grid">
+        <div class="footer_brand">
           <p class="footer_brand_name">Leonard Zonaphan.</p>
           <p class="footer_sub">
             AI Product Owner &amp; Software Engineer — RPA, process automation, and digital
             transformation.
           </p>
           <p class="footer_copyright">© {{ currentYear }} Leonard Zonaphan • Jakarta</p>
-        </v-col>
-        <v-col cols="6" md="3" class="footer_col">
-          <ul class="footer_list d-flex flex-column">
+        </div>
+        <div class="footer_col">
+          <ul class="footer_list">
             <li class="footer_list_heading">Elsewhere</li>
             <li>
               <a
@@ -53,9 +53,9 @@ const currentYear = new Date().getFullYear()
               </a>
             </li>
           </ul>
-        </v-col>
-        <v-col cols="6" md="3" class="footer_col">
-          <ul class="footer_list d-flex flex-column">
+        </div>
+        <div class="footer_col">
+          <ul class="footer_list">
             <li class="footer_list_heading">Contact</li>
             <li>
               <a href="mailto:info@leonardzonaphan.com"> info@leonardzonaphan.com </a>
@@ -64,10 +64,10 @@ const currentYear = new Date().getFullYear()
               <a href="#home">Back to top ↑</a>
             </li>
           </ul>
-        </v-col>
-      </v-row>
-    </v-container>
-    <div class="footer_giant" aria-hidden="true">LEONARD</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_giant" aria-hidden="true" />
   </footer>
 </template>
 
@@ -109,8 +109,8 @@ const currentYear = new Date().getFullYear()
 
     em {
       font-style: normal;
-      background: linear-gradient(transparent 62%, rgba(232, 176, 75, 0.65) 62%);
-      padding: 0 0.1em;
+      color: $--color-accent;
+      text-shadow: 0 0 30px rgba(242, 184, 79, 0.35);
     }
   }
 
@@ -164,7 +164,13 @@ const currentYear = new Date().getFullYear()
   }
 
   &_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem 0;
+  }
+
+  &_brand {
+    grid-column: 1 / -1;
   }
 
   &_brand_name {
@@ -188,6 +194,8 @@ const currentYear = new Date().getFullYear()
   }
 
   &_list {
+    display: flex;
+    flex-direction: column;
     padding: 0;
     margin: 0;
 
@@ -206,6 +214,7 @@ const currentYear = new Date().getFullYear()
         padding: 0.25rem 0.35rem;
         margin-left: -0.35rem;
         border-radius: 8px;
+        overflow-wrap: anywhere;
         color: $--color-cream-dim;
 
         &:hover {
@@ -215,6 +224,7 @@ const currentYear = new Date().getFullYear()
     }
   }
 
+  // extruded wordmark lying back into the page
   &_giant {
     font-family: $--title-font;
     font-weight: 700;
@@ -222,11 +232,37 @@ const currentYear = new Date().getFullYear()
     line-height: 0.85;
     text-align: center;
     letter-spacing: 0.02em;
-    color: transparent;
-    -webkit-text-stroke: 1.5px rgba(242, 236, 221, 0.16);
+    // decorative: the word lives in ::before so it isn't graded as body text
+    color: $--color-bg-raised;
+    -webkit-text-stroke: 1.5px rgba(232, 176, 75, 0.5);
+    text-shadow:
+      0 1px 0 #0e3832,
+      0 2px 0 #0e3832,
+      0 3px 0 #0d342e,
+      0 4px 0 #0d342e,
+      0 5px 0 #0c302b,
+      0 6px 0 #0c302b,
+      0 7px 0 #0b2c27,
+      0 8px 0 #0b2c27,
+      0 22px 30px rgba(0, 0, 0, 0.55);
     user-select: none;
     margin-top: $--spacing-s;
-    transform: translateY(0.12em);
+    transform: perspective(700px) rotateX(34deg) translateY(0.1em);
+    transform-origin: 50% 100%;
+
+    &::before {
+      content: 'LEONARD';
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  .footer_grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .footer_brand {
+    grid-column: auto;
   }
 }
 </style>

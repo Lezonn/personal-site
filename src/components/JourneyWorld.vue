@@ -8,6 +8,9 @@ import { detectTier } from '@/journey/quality'
 
 // Hero + career journey share one sticky WebGL stage. The DOM steps (hero,
 // then one per stop) scroll over it; their positions drive the 3D progress.
+// Until the visitor first interacts, the stage shows a pre-rendered poster of
+// the opening shot, so building the scene never competes with the first paint.
+const WAKE_EVENTS = ['pointermove', 'pointerdown', 'touchstart', 'wheel', 'keydown', 'scroll']
 const tier = detectTier()
 const mode = ref(tier === 'static' ? 'static' : '3d')
 const root = ref(null)
@@ -27,6 +30,7 @@ const railVisible = computed(
 )
 
 let world = null
+let starting = false
 let anchors = []
 let disposed = false
 let resizeObserver = null
@@ -67,6 +71,9 @@ function fallBackToStatic() {
 }
 
 async function startWorld() {
+  if (starting) return
+  starting = true
+  WAKE_EVENTS.forEach((type) => window.removeEventListener(type, startWorld))
   try {
     await Promise.race([
       document.fonts?.load('700 40px Poppins').catch(() => {}),
@@ -106,11 +113,14 @@ onMounted(() => {
     syncRunning()
   })
   viewObserver.observe(root.value)
-  if (mode.value === '3d') startWorld()
+  if (mode.value !== '3d') return
+  if (window.scrollY > 0) startWorld()
+  else WAKE_EVENTS.forEach((type) => window.addEventListener(type, startWorld, { passive: true }))
 })
 
 onUnmounted(() => {
   disposed = true
+  WAKE_EVENTS.forEach((type) => window.removeEventListener(type, startWorld))
   window.removeEventListener('scroll', onScroll)
   document.removeEventListener('visibilitychange', syncRunning)
   resizeObserver?.disconnect()
@@ -168,8 +178,13 @@ onUnmounted(() => {
     height: 100vh;
     height: 100lvh;
     overflow: hidden;
-    background: radial-gradient(70vmax 50vmax at 70% 30%, rgba(31, 122, 106, 0.35), transparent 60%),
-      linear-gradient(180deg, #020d0b, #0b2f2a);
+    background:
+      url('/journey/overview-wide.webp') center / cover no-repeat,
+      #061b18;
+
+    @media (max-aspect-ratio: 9/10) {
+      background-image: url('/journey/overview-tall.webp');
+    }
   }
 
   &_canvas {
@@ -225,10 +240,9 @@ onUnmounted(() => {
     }
   }
 
-  // story cards fade in while their stop is the active one
+  // the active stop's card settles into place
   &--3d :deep(.card) {
-    opacity: 0.18;
-    transform: translateY(18px) scale(0.98);
+    transform: translateY(18px) scale(0.97);
   }
 
   &--3d :deep(.card.is-active) {

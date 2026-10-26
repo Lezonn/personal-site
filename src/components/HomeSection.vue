@@ -1,6 +1,6 @@
 <script setup>
 import BubbleBackground from './BubbleBackground.vue'
-import leoImg from '@/assets/leo.webp'
+import avatarImg from '@/assets/leo-avatar.webp'
 
 defineProps({
   staticMode: { type: Boolean, default: false }
@@ -15,7 +15,7 @@ defineProps({
       <h1 class="home_title">AI-enable <em>your idea.</em></h1>
       <p class="home_intro">
         <img
-          :src="leoImg"
+          :src="avatarImg"
           class="home_avatar"
           alt="Leonard Zonaphan"
           width="56"
@@ -27,13 +27,9 @@ defineProps({
           actually use.
         </span>
       </p>
-      <div class="home_actions d-flex flex-wrap">
-        <v-btn color="#e8b04b" class="home_actions_primary" href="#journey">
-          Start the ride ↓
-        </v-btn>
-        <v-btn variant="outlined" class="home_actions_secondary" href="#contact">
-          Get in touch
-        </v-btn>
+      <div class="home_actions">
+        <a class="home_btn home_btn--primary" href="#journey">Start the ride ↓</a>
+        <a class="home_btn home_btn--secondary" href="#contact">Get in touch</a>
       </div>
     </div>
     <a v-if="!staticMode" class="home_cue" href="#journey">
@@ -70,8 +66,9 @@ defineProps({
 
   &--static {
     overflow: hidden;
-    background: radial-gradient(50vmax 40vmax at 85% 20%, rgba(232, 176, 75, 0.18), transparent 60%),
-      radial-gradient(60vmax 50vmax at 0% 100%, rgba(7, 90, 78, 0.55), transparent 60%), $--color-bg;
+    background:
+      url('/journey/overview-wide.webp') center / cover no-repeat,
+      $--color-bg;
   }
 
   &_copy {
@@ -126,37 +123,59 @@ defineProps({
     height: 56px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: 50% 12%;
+    object-position: center;
     background: $--color-bg-raised;
     border: 2px solid $--color-accent;
     box-shadow: 0 0 0 5px rgba(232, 176, 75, 0.15);
   }
 
   &_actions {
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: $--spacing-s;
+  }
 
-    :deep(.v-btn) {
-      min-height: 48px;
-      height: 48px;
+  &_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease,
+      border-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
     }
 
-    &_primary,
-    &_secondary {
-      text-transform: none;
-      letter-spacing: 0;
-      font-weight: 700;
-      border-radius: 999px;
-      padding: 0 1.6rem;
+    &:focus-visible {
+      outline: 2px solid $--color-cream;
+      outline-offset: 3px;
     }
 
-    &_primary {
-      color: $--color-ink !important;
+    &--primary {
+      color: $--color-ink;
+      background: $--color-accent;
+      box-shadow: 0 10px 30px rgba(232, 176, 75, 0.25);
+
+      &:hover {
+        background: #f2c46a;
+      }
     }
 
-    &_secondary {
-      border-color: rgba(242, 236, 221, 0.5);
+    &--secondary {
       color: $--color-cream;
+      border: 1px solid rgba(242, 236, 221, 0.5);
+
+      &:hover {
+        border-color: $--color-cream;
+      }
     }
   }
 
@@ -213,7 +232,13 @@ defineProps({
 
     &--static {
       align-items: center;
+      background-image: url('/journey/overview-tall.webp');
     }
+  }
+
+  // the road runs where the cue would sit; the "Start the ride" button covers it
+  .home_cue {
+    display: none;
   }
 }
 

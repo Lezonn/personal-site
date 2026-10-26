@@ -413,10 +413,12 @@ export function createWorld(canvas, { stops, tier = 'high', onFirstFrame } = {})
   let width = 1
   let height = 1
   let portrait = false
-  const overview = {
-    focus: routeMid.clone().add(new THREE.Vector3(10, -6, 4)),
-    dir: new THREE.Vector3(1, 1.05, 0.45).normalize(),
-    dist: 250
+  // opening shot: from behind the first stop, looking down the whole road
+  // (steeper and straighter on portrait screens so the road runs up the page)
+  const overviewFocus = routeMid.clone().add(new THREE.Vector3(2, -6, 6))
+  const overviewDir = {
+    wide: new THREE.Vector3(0.62, 0.7, 1).normalize(),
+    tall: new THREE.Vector3(0.22, 0.95, 1).normalize()
   }
   const stopFocus = centers.map((c) => new THREE.Vector3(c.x + 1.5, c.y + 1.4, c.z))
 
@@ -425,7 +427,11 @@ export function createWorld(canvas, { stops, tier = 'high', onFirstFrame } = {})
     return portrait ? [0, 0.17] : [i % 2 ? -0.2 : 0.2, 0.02]
   }
   function heroShift() {
-    return portrait ? [0, -0.16] : [0.16, 0]
+    return portrait ? [0.02, -0.21] : [0.23, 0.06]
+  }
+  function overviewCamera(out) {
+    const dir = portrait ? overviewDir.tall : overviewDir.wide
+    return out.copy(overviewFocus).addScaledVector(dir, portrait ? 400 : 205)
   }
   // far enough that an island (~30 units with its road) fits the narrow side
   function stopDist() {
@@ -450,8 +456,8 @@ export function createWorld(canvas, { stops, tier = 'high', onFirstFrame } = {})
     if (t <= 1) {
       const e = easeInOut(t)
       stopPose(0, tmpA, tmpB)
-      focus.copy(overview.focus).lerp(tmpA, e)
-      camPos.copy(overview.focus).addScaledVector(overview.dir, overview.dist).lerp(tmpB, e)
+      focus.copy(overviewFocus).lerp(tmpA, e)
+      overviewCamera(camPos).lerp(tmpB, e)
       const hs = heroShift()
       const ss = stopShift(0)
       state.shift = [hs[0] + (ss[0] - hs[0]) * e, hs[1] + (ss[1] - hs[1]) * e]
