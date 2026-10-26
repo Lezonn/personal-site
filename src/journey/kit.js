@@ -219,6 +219,38 @@ export function sign(
   return g
 }
 
+// Night facade: a grid of windows, some lit. Glows through emissiveMap.
+export function facade(
+  parent,
+  [w, h],
+  [x, y, z],
+  rotY,
+  { cols, rows, lit = 0.55, wall = '#123a34', seed = 1 }
+) {
+  let s = seed
+  const rand = () => (s = (s * 9301 + 49297) % 233280) / 233280
+  const tex = canvasTexture(cols * 32, rows * 40, (ctx, cw, ch) => {
+    ctx.fillStyle = wall
+    ctx.fillRect(0, 0, cw, ch)
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        ctx.fillStyle = rand() < lit ? (rand() < 0.75 ? '#ffd58a' : '#cfeee6') : '#0b1f1c'
+        ctx.fillRect(c * 32 + 7, r * 40 + 8, 18, 24)
+      }
+    }
+  })
+  const material = new THREE.MeshStandardMaterial({
+    map: tex,
+    emissiveMap: tex,
+    emissive: '#ffffff',
+    emissiveIntensity: 0.6,
+    roughness: 0.8
+  })
+  const mesh = add(parent, new THREE.PlaneGeometry(w, h), material, [x, y + h / 2, z], [0, rotY])
+  mesh.castShadow = false
+  return mesh
+}
+
 // ---------- props ----------
 
 export function tree(parent, [x, z], s = 1, color = palette.tealLight) {

@@ -146,6 +146,7 @@ onUnmounted(() => {
             :index="i"
             :active="mode === 'static' || active === i"
             :overlay="mode === '3d'"
+            :still="mode === 'static' ? `/journey/${stop.id}.webp` : ''"
           />
         </div>
       </section>
@@ -304,6 +305,13 @@ onUnmounted(() => {
 
     &.is-right {
       justify-content: flex-end;
+    }
+
+    // interleave the zig-zag so the columns don't leave half-empty rows
+    @media (min-width: 900px) {
+      & + .world_step {
+        margin-top: -12rem;
+      }
     }
   }
 
