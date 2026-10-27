@@ -28,13 +28,40 @@ html {
 
 :root {
   font-family: $--body-font;
-  color-scheme: dark;
+  color-scheme: light;
+
+  // ---------- theme tokens: bright day (the original cream + mist palette) ----------
+  --c-bg: #f5f1e8;
+  --c-bg-raised: #ffffff;
+  --c-surface: rgba(255, 255, 255, 0.92);
+  --c-nav: rgba(255, 255, 255, 0.82);
+  --c-border: rgba(10, 46, 41, 0.12);
+  --c-border-strong: rgba(10, 46, 41, 0.35);
+  --c-hover: rgba(10, 46, 41, 0.04);
+  --c-text: #13312c;
+  --c-text-dim: #50625e;
+  --c-heading: #0a2e29;
+  --c-accent: #075a4e;
+  --c-accent-hover: #0a6d5f;
+  --c-on-accent: #ffffff;
+  --c-highlight: #b7791f;
+  --c-highlight-glow: transparent;
+  --c-glow-ai: #b7791f;
+  --c-glow-code: #0f8a72;
+  --c-on-glow: #ffffff;
+  --c-scrim: #f5f1e8;
+  --c-shadow: rgba(10, 46, 41, 0.14);
+  --c-extrude: #d8cfbd;
+  // sky behind the hero and the 3D world (matches src/journey/themes.js)
+  --c-sky-top: #7fb2cc;
+  --c-sky-mid: #c3dbe4;
+  --c-sky-bottom: #f6f1e6;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 72px;
-  background: $--color-bg;
+  background: var(--c-bg);
 }
 
 // centered content column; components set their own max-width
@@ -46,8 +73,8 @@ html {
 }
 
 body {
-  background: $--color-bg;
-  color: $--color-cream;
+  background: var(--c-bg);
+  color: var(--c-text);
 }
 
 section[id] {
@@ -55,8 +82,7 @@ section[id] {
 }
 
 ::selection {
-  background: rgba(232, 176, 75, 0.35);
-  color: #fff;
+  background: rgba(7, 90, 78, 0.18);
 }
 
 li {

@@ -17,7 +17,7 @@ import {
 
 // BINUS University — where the ride started. Mint glow (the code era): the
 // floating graduation cap and the VR headset from the metaverse paper.
-export default function campus(island, { glow, label }) {
+export default function campus(island, { glow, label, brand }) {
   const stone = mat('#e3dac4')
   box(island, [11.4, 0.14, 14], [-3.4, 0, 0], mat('#3f514e'))
 
@@ -84,7 +84,7 @@ export default function campus(island, { glow, label }) {
     orbit.push(o)
   }
 
-  sign(island, label, { pos: [-2.75, 6.25, 0], width: 3.8, height: 0.85, rotY: Math.PI / 2, glow })
+  sign(island, label, { pos: [-2.75, 6.25, 0], width: 3.8, rotY: Math.PI / 2, glow, brand })
 
   tree(island, [-6, 7.8], 1.1)
   tree(island, [-6.4, -7.6], 1)

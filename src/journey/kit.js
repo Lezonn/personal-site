@@ -117,6 +117,10 @@ export function dynamicGroup(parent, [x, y, z] = [0, 0, 0]) {
   return g
 }
 
+// Theme-wide knobs read while building (see themes.js): `glow` scales every
+// halo / light pool, since additive glows that sing at night wash out by day.
+export const look = { glow: 1 }
+
 // ---------- textures ----------
 
 let haloTexture = null
@@ -143,7 +147,7 @@ export function halo(parent, [x, y, z], size, color, opacity = 0.55) {
       map: getHaloTexture(),
       color,
       transparent: true,
-      opacity,
+      opacity: opacity * look.glow,
       blending: THREE.AdditiveBlending,
       depthWrite: false
     })
@@ -163,7 +167,7 @@ export function lightPool(parent, [x, y, z], size, color, opacity = 0.35) {
       map: getHaloTexture(),
       color,
       transparent: true,
-      opacity,
+      opacity: opacity * look.glow,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       toneMapped: false
@@ -187,29 +191,63 @@ export function canvasTexture(width, height, draw) {
   return tex
 }
 
-// Lit signboard with generic text (no real logos, by design).
-export function sign(
-  parent,
-  text,
-  { pos, width = 6, height = 1.2, rotY = 0, color = palette.cream, glow }
-) {
+// Brand signboard: the company logo with the place's name underneath. Until
+// brand.logo loads (or if the file is missing) the plate shows the brand name.
+export function sign(parent, caption, { pos, width = 6, rotY = 0, glow, brand }) {
+  const height = width * 0.3
   const g = dynamicGroup(parent, pos)
   g.rotation.y = rotY
   box(g, [width + 0.3, height + 0.3, 0.25], [0, -0.15, -0.14], palette.ink)
-  const tex = canvasTexture(1024, Math.round((1024 * height) / width), (ctx, w, h) => {
+  const W = 1024
+  const H = Math.round(W * 0.3)
+  const canvas = document.createElement('canvas')
+  canvas.width = W
+  canvas.height = H
+  const ctx = canvas.getContext('2d')
+  const draw = (logo) => {
+    ctx.fillStyle = '#ffffff'
+    ctx.fillRect(0, 0, W, H)
+    const logoBox = { x: W * 0.06, y: H * 0.1, w: W * 0.88, h: H * 0.56 }
+    if (logo) {
+      const k = Math.min(logoBox.w / logo.width, logoBox.h / logo.height)
+      const lw = logo.width * k
+      const lh = logo.height * k
+      ctx.drawImage(logo, (W - lw) / 2, logoBox.y + (logoBox.h - lh) / 2, lw, lh)
+    } else if (brand) {
+      ctx.fillStyle = '#0a2e29'
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+      let size = H * 0.42
+      ctx.font = `700 ${size}px Poppins, "Segoe UI", sans-serif`
+      while (ctx.measureText(brand.name).width > logoBox.w && size > 20) {
+        size -= 4
+        ctx.font = `700 ${size}px Poppins, "Segoe UI", sans-serif`
+      }
+      ctx.fillText(brand.name, W / 2, logoBox.y + logoBox.h / 2)
+    }
+    // caption strip in the stop's tech colour
+    ctx.fillStyle = glow || '#075a4e'
+    ctx.fillRect(0, H * 0.74, W, H * 0.26)
     ctx.fillStyle = '#0a2e29'
-    ctx.fillRect(0, 0, w, h)
-    ctx.fillStyle = color
-    ctx.font = `700 ${Math.round(h * 0.56)}px Poppins, "Segoe UI", sans-serif`
+    ctx.font = `700 ${H * 0.15}px Poppins, "Segoe UI", sans-serif`
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
-    if ('letterSpacing' in ctx) ctx.letterSpacing = `${Math.round(h * 0.08)}px`
-    ctx.fillText(text, w / 2, h / 2 + h * 0.03)
-    if (glow) {
-      ctx.fillStyle = glow
-      ctx.fillRect(0, h - h * 0.08, w, h * 0.08)
+    if ('letterSpacing' in ctx) ctx.letterSpacing = `${Math.round(H * 0.025)}px`
+    ctx.fillText(caption, W / 2, H * 0.875)
+    if ('letterSpacing' in ctx) ctx.letterSpacing = '0px'
+  }
+  draw(null)
+  const tex = new THREE.CanvasTexture(canvas)
+  tex.colorSpace = THREE.SRGBColorSpace
+  tex.anisotropy = 4
+  if (brand?.logo) {
+    const img = new Image()
+    img.onload = () => {
+      draw(img)
+      tex.needsUpdate = true
     }
-  })
+    img.src = brand.logo
+  }
   const face = new THREE.Mesh(
     new THREE.PlaneGeometry(width, height),
     new THREE.MeshBasicMaterial({ map: tex, toneMapped: false })

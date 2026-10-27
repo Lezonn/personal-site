@@ -2,17 +2,12 @@
 defineProps({
   stop: { type: Object, required: true },
   index: { type: Number, required: true },
-  active: { type: Boolean, default: false },
-  overlay: { type: Boolean, default: false },
   still: { type: String, default: '' }
 })
 </script>
 
 <template>
-  <article
-    class="card"
-    :class="[`card--${stop.glow}`, { 'is-active': active, 'card--overlay': overlay }]"
-  >
+  <article class="card" :class="`card--${stop.glow}`">
     <img
       v-if="still"
       :src="still"
@@ -57,26 +52,24 @@ defineProps({
 @import '@/assets/styles/variables';
 
 .card {
-  --glow: #{$--color-glow-ai};
+  --glow: var(--c-glow-ai);
   position: relative;
   width: min(100%, 460px);
   padding: 1.6rem 1.6rem 1.4rem;
   border-radius: 24px;
-  background: $--color-glass;
-  border: 1px solid $--color-line;
-  box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  box-shadow: 0 24px 50px var(--c-shadow);
   backdrop-filter: blur(14px) saturate(1.2);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
-  color: $--color-cream;
+  color: var(--c-text);
   overflow: hidden;
   transition:
     opacity 0.6s ease,
     transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 
   &--code {
-    --glow: #{$--color-glow-code};
+    --glow: var(--c-glow-code);
   }
 
   // top edge glow in the stop's tech color (gold = AI era, mint = code era)
@@ -105,7 +98,7 @@ defineProps({
     font-size: 3.2rem;
     line-height: 1;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(242, 236, 221, 0.22);
+    -webkit-text-stroke: 1px var(--c-border);
     pointer-events: none;
     user-select: none;
   }
@@ -128,33 +121,33 @@ defineProps({
   }
 
   &_category {
-    color: $--color-ink;
+    color: var(--c-on-glow);
     background: var(--glow);
   }
 
   &_period {
-    color: $--color-cream;
-    border: 1px solid rgba(242, 236, 221, 0.3);
+    color: var(--c-text);
+    border: 1px solid var(--c-border);
   }
 
   &_title {
     font-size: $--font-h5;
     line-height: 1.25;
-    color: #fff;
+    color: var(--c-heading);
     margin: 0.9rem 0 0.2rem;
   }
 
   &_company {
     font-size: $--font-mini;
     font-weight: 600;
-    color: $--color-cream-dim;
+    color: var(--c-text-dim);
     margin: 0;
   }
 
   &_summary {
     font-size: $--font-mini;
     line-height: 1.6;
-    color: $--color-cream;
+    color: var(--c-text);
     opacity: 0.88;
     margin: 0.75rem 0 0;
   }
@@ -170,12 +163,11 @@ defineProps({
       font-size: 2.1rem;
       line-height: 1;
       color: var(--glow);
-      text-shadow: 0 0 24px color-mix(in srgb, var(--glow) 45%, transparent);
     }
 
     &_label {
       font-size: $--font-mini;
-      color: $--color-cream-dim;
+      color: var(--c-text-dim);
     }
   }
 
@@ -190,7 +182,7 @@ defineProps({
       padding-left: 1.3rem;
       font-size: 0.9rem;
       line-height: 1.5;
-      color: $--color-cream;
+      color: var(--c-text);
       opacity: 0.9;
 
       &::before {
@@ -212,8 +204,8 @@ defineProps({
 
   &_tag {
     font-size: 0.78rem;
-    border: 1px solid rgba(242, 236, 221, 0.24);
-    color: $--color-cream-dim;
+    border: 1px solid var(--c-border);
+    color: var(--c-text-dim);
     border-radius: 999px;
     padding: 0.2rem 0.7rem;
   }
@@ -245,10 +237,6 @@ defineProps({
     &_still {
       width: calc(100% + 2.4rem);
       margin: -1.2rem -1.2rem 1rem;
-    }
-
-    &--overlay &_summary {
-      display: none;
     }
 
     &_highlight_value {

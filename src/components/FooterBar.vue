@@ -6,7 +6,7 @@ const currentYear = new Date().getFullYear()
   <footer id="contact" class="footer">
     <div class="container footer_cta">
       <p class="footer_kicker">Let's talk</p>
-      <h2 class="footer_cta_title">Got an idea? Let's <em>AI-enable</em> it.</h2>
+      <h2 class="footer_cta_title">Got a messy process? Let's <em>automate</em> it.</h2>
       <p class="footer_cta_text">
         AI Product Owner &amp; Software Engineer — from GenAI products and process automation to
         full-stack software. Open to product, automation, and engineering roles.
@@ -76,8 +76,8 @@ const currentYear = new Date().getFullYear()
 
 .footer {
   position: relative;
-  background-color: $--color-bg;
-  border-top: 1px solid rgba(242, 236, 221, 0.1);
+  background-color: var(--c-bg);
+  border-top: 1px solid var(--c-border);
   padding: $--spacing-l 0 0;
   overflow: hidden;
 
@@ -86,7 +86,7 @@ const currentYear = new Date().getFullYear()
     text-align: center;
     padding: $--spacing-l 1rem $--spacing-l;
     margin-bottom: $--spacing-l;
-    border-bottom: 1px solid rgba(242, 236, 221, 0.14);
+    border-bottom: 1px solid var(--c-border);
   }
 
   &_kicker {
@@ -94,7 +94,7 @@ const currentYear = new Date().getFullYear()
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: $--color-accent;
+    color: var(--c-accent);
     margin-bottom: 0.5rem;
   }
 
@@ -104,20 +104,20 @@ const currentYear = new Date().getFullYear()
     line-height: 1.1;
     letter-spacing: -0.01em;
     text-wrap: balance;
-    color: $--color-cream;
+    color: var(--c-text);
     margin: 0;
 
     em {
       font-style: normal;
-      color: $--color-accent;
-      text-shadow: 0 0 30px rgba(242, 184, 79, 0.35);
+      color: var(--c-highlight);
+      text-shadow: 0 0 30px var(--c-highlight-glow);
     }
   }
 
   &_cta_text {
     max-width: 540px;
     margin: $--spacing-s auto $--spacing-s;
-    color: $--color-cream-dim;
+    color: var(--c-text-dim);
   }
 
   &_cta_btn {
@@ -126,15 +126,15 @@ const currentYear = new Date().getFullYear()
     min-height: 48px;
     padding: 0 1.75rem;
     border-radius: 999px;
-    background: $--color-accent;
-    color: $--color-ink;
+    background: var(--c-accent);
+    color: var(--c-on-accent);
     font-weight: 700;
     transition:
       transform 0.2s ease,
       background 0.2s ease;
 
     &:hover {
-      background: $--color-cream;
+      background: var(--c-text);
       transform: translateY(-2px);
     }
   }
@@ -150,10 +150,10 @@ const currentYear = new Date().getFullYear()
       min-height: 44px;
       display: inline-flex;
       align-items: center;
-      color: $--color-cream-dim;
+      color: var(--c-text-dim);
 
       &:hover {
-        color: $--color-accent;
+        color: var(--c-accent);
       }
     }
   }
@@ -176,19 +176,19 @@ const currentYear = new Date().getFullYear()
   &_brand_name {
     font-family: $--title-font;
     font-size: $--font-h3;
-    color: $--color-cream;
+    color: var(--c-text);
     margin: 0;
   }
 
   &_sub {
-    color: $--color-cream-dim;
+    color: var(--c-text-dim);
     font-size: $--font-link;
     max-width: 380px;
     margin: 0.5rem 0 0;
   }
 
   &_copyright {
-    color: $--color-cream-dim;
+    color: var(--c-text-dim);
     font-size: $--font-mini;
     margin: 1rem 0 0;
   }
@@ -200,7 +200,7 @@ const currentYear = new Date().getFullYear()
     margin: 0;
 
     &_heading {
-      color: $--color-accent;
+      color: var(--c-accent);
       font-weight: 600;
     }
 
@@ -215,10 +215,10 @@ const currentYear = new Date().getFullYear()
         margin-left: -0.35rem;
         border-radius: 8px;
         overflow-wrap: anywhere;
-        color: $--color-cream-dim;
+        color: var(--c-text-dim);
 
         &:hover {
-          color: $--color-accent;
+          color: var(--c-accent);
         }
       }
     }
@@ -233,18 +233,18 @@ const currentYear = new Date().getFullYear()
     text-align: center;
     letter-spacing: 0.02em;
     // decorative: the word lives in ::before so it isn't graded as body text
-    color: $--color-bg-raised;
-    -webkit-text-stroke: 1.5px rgba(232, 176, 75, 0.5);
+    color: var(--c-bg-raised);
+    -webkit-text-stroke: 1.5px color-mix(in srgb, var(--c-highlight) 55%, transparent);
     text-shadow:
-      0 1px 0 #0e3832,
-      0 2px 0 #0e3832,
-      0 3px 0 #0d342e,
-      0 4px 0 #0d342e,
-      0 5px 0 #0c302b,
-      0 6px 0 #0c302b,
-      0 7px 0 #0b2c27,
-      0 8px 0 #0b2c27,
-      0 22px 30px rgba(0, 0, 0, 0.55);
+      0 1px 0 var(--c-extrude),
+      0 2px 0 var(--c-extrude),
+      0 3px 0 var(--c-extrude),
+      0 4px 0 var(--c-extrude),
+      0 5px 0 var(--c-extrude),
+      0 6px 0 var(--c-extrude),
+      0 7px 0 var(--c-extrude),
+      0 8px 0 var(--c-extrude),
+      0 22px 30px var(--c-shadow);
     user-select: none;
     margin-top: $--spacing-s;
     transform: perspective(700px) rotateX(34deg) translateY(0.1em);

@@ -19,7 +19,7 @@ import {
 
 // Auto2000 workshop — Management Trainee. Gold glow: the RPA robot arm, the
 // spinning automation gear, and the board showing the 68% workload cut.
-export default function workshop(island, { glow, label }) {
+export default function workshop(island, { glow, label, brand }) {
   const concrete = mat('#40524f')
   box(island, [11.6, 0.16, 14], [-3.2, 0, 0], concrete)
   for (const z of [-4.4, 0, 4.4]) box(island, [11.4, 0.02, 0.12], [-3.2, 0.16, z], palette.gold)
@@ -111,7 +111,7 @@ export default function workshop(island, { glow, label }) {
   }
   halo(gear, [0, 0, 0], 4, glow, 0.35)
 
-  sign(island, label, { pos: [2.85, 4.75, 0], width: 6.4, rotY: Math.PI / 2, glow })
+  sign(island, label, { pos: [2.85, 4.75, 0], width: 6.4, rotY: Math.PI / 2, glow, brand })
 
   tree(island, [-6.4, 8], 1)
   tree(island, [-9.4, 4.8], 0.8)

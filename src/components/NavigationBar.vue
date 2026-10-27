@@ -61,7 +61,7 @@ nav {
   a {
     font-weight: 600;
     position: relative;
-    color: $--color-cream;
+    color: var(--c-text);
     margin: $--spacing-xxs;
     padding: 0.35rem $--spacing-xxs;
     white-space: nowrap;
@@ -73,7 +73,7 @@ nav {
       bottom: 2px;
       width: 100%;
       height: 2px;
-      background: $--color-accent;
+      background: var(--c-accent);
       border-radius: 2px;
       transform: scaleX(0);
       transition: transform 0.3s ease;
@@ -87,7 +87,7 @@ nav {
     }
 
     &:focus-visible {
-      outline: 2px solid $--color-accent;
+      outline: 2px solid var(--c-accent);
       outline-offset: 3px;
       border-radius: 6px;
     }
@@ -95,11 +95,11 @@ nav {
 }
 
 .navbar-floating {
-  background: rgba(6, 27, 24, 0.7);
-  border: 1px solid $--color-line;
+  background: var(--c-nav);
+  border: 1px solid var(--c-border);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 30px var(--c-shadow);
 }
 
 @media (max-width: 560px) {

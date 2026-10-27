@@ -18,7 +18,7 @@ import {
 // BINUS IT Division — full-stack developer on the BINUS Square portal.
 // Mint glow (the code era): the ops portal screen, the blinking server rack,
 // and the database stack being migrated.
-export default function itDivision(island, { glow, label }) {
+export default function itDivision(island, { glow, label, brand }) {
   box(island, [11.6, 0.14, 14], [-3.2, 0, 0], mat('#3a4c49'))
 
   // residence tower (BINUS Square)
@@ -94,7 +94,7 @@ export default function itDivision(island, { glow, label }) {
   person(island, [-2, -1.2], palette.slate, 2)
   person(island, [-1, 6.4], palette.coral, -2.4)
   box(island, [0.6, 0.12, 2], [1.4, 0.5, 6.2], palette.wood)
-  sign(island, label, { pos: [-3.25, 3.95, 3.6], width: 4.2, height: 0.9, rotY: Math.PI / 2, glow })
+  sign(island, label, { pos: [-3.25, 3.95, 3.6], width: 4.2, rotY: Math.PI / 2, glow, brand })
 
   tree(island, [-9.6, 1.6], 0.9)
   tree(island, [1.4, -8.4], 1)

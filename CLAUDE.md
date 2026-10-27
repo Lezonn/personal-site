@@ -6,23 +6,31 @@ and career journey are a Three.js scene. Scripts are in `package.json`.
 
 ## Page anatomy
 
-`App.vue` stacks: `NavigationBar` → `JourneyWorld` (hero + journey) → `AboutSection` → `FooterBar`.
+`App.vue` stacks: `NavigationBar` → `HomeSection` (hero: portrait in a bubble with orbiting skill
+bubbles, the hook, proof chips) → `JourneyWorld` (3D journey) → `AboutSection` → `FooterBar`.
 `App.vue` also owns the SEO metadata (vue-meta, JSON-LD Person); `index.html` carries a static copy
 of the same meta for no-JS crawlers, so edit both together.
 
-Theme is **dark-first**: tokens live in `src/assets/styles/_variables.scss` (`$--color-bg`,
-`$--color-glass`, `$--color-glow-ai` gold, `$--color-glow-code` mint, …). Fonts: Averia Libre
-(titles), Poppins (body).
+Theme is a **bright day look** built on the original cream + mist-blue palette. Colors are CSS
+custom properties on `:root` in `src/assets/styles/main.scss` (`--c-bg`, `--c-surface`, `--c-text`,
+`--c-accent` teal, `--c-highlight` gold, `--c-glow-ai` / `--c-glow-code`, `--c-sky-*`); use them in
+components rather than literal colors. The 3D world's colors live in `src/journey/themes.js`, and
+its sky stops mirror `--c-sky-*` so the hero blends into the stage. Bubbles are the site's motif
+(CSS bubbles in the hero, glassy point sprites in the world). Fonts: Averia Libre (titles),
+Poppins (body).
 
 ## The journey
 
-- **Content** is `src/data/journey.js`, newest stop first. One entry = one island + one story card.
+- **Content** is `src/data/journey.js`, newest stop first. One entry = one island + one chapter.
   `scene` picks the diorama builder, `glow` the era (`ai` gold for AI/automation work, `code` mint
-  for earlier engineering), `sign` the generic billboard text. Signs stay generic (no company
-  logos) by design.
-- **Stage**: `JourneyWorld.vue` keeps a sticky canvas behind DOM steps (`[data-step]`: hero, then
-  one per stop). Scroll position between step tops becomes progress `t` (0 = hero overview,
-  k = parked at stop k-1). Cards, rail and SEO text all stay in the DOM.
+  for earlier engineering), `sign` the caption under the logo, `brand` the company name + logo.
+- **Logos**: `brand.logo` points into `public/journey/logos/`. The island sign plate and the
+  caption bar draw the file when it exists and fall back to the brand name as a wordmark when it
+  doesn't, so a logo is added by dropping the file in with the matching name.
+- **Stage**: `JourneyWorld.vue` keeps a sticky canvas behind DOM steps (`[data-step]`: an intro,
+  then one per stop). Scroll position between step tops becomes progress `t` (0 = overview,
+  k = parked at stop k-1). The story runs as a lower-third caption bar (chapters cross-fade);
+  "Details" opens a side panel and the framing slides the island aside. All text stays in the DOM.
 - **World**: `src/journey/world.js` builds islands, road, car, sky and the camera choreography;
   it is lazy-loaded and only built on the visitor's first interaction (scroll, pointer, key), so
   it never competes with first paint. Until then the stage shows a poster of the opening shot

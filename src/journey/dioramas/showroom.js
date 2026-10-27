@@ -20,7 +20,7 @@ import {
 
 // Auto2000 showroom — AI Product Owner. Gold glow: the AI virtual assistant
 // hologram, live-chat bubbles over the floor, and the AI-generated key visual.
-export default function showroom(island, { glow, label }) {
+export default function showroom(island, { glow, label, brand }) {
   // floor, walls, roof
   box(island, [11.6, 0.18, 14], [-3.2, 0, 0], palette.cream)
   box(island, [0.5, 4.6, 13.4], [-8.7, 0, 0], palette.inkSoft)
@@ -133,7 +133,7 @@ export default function showroom(island, { glow, label }) {
   kv.add(kvFace)
   halo(kv, [0, 3.9, 0.3], 5, glow, 0.25)
 
-  sign(island, label, { pos: [2.8, 5.1, 0], width: 6.4, rotY: Math.PI / 2, glow })
+  sign(island, label, { pos: [2.8, 5.1, 0], width: 6.4, rotY: Math.PI / 2, glow, brand })
 
   tree(island, [-6, 8.2], 1.1)
   tree(island, [-9.4, -4.8], 0.9)

@@ -60,27 +60,27 @@ defineProps({
     margin: 0;
     padding: 0.5rem 0.4rem;
     border-radius: 999px;
-    background: rgba(6, 27, 24, 0.55);
-    border: 1px solid $--color-line;
+    background: var(--c-nav);
+    border: 1px solid var(--c-border);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
 
   &_stop {
-    --glow: #{$--color-glow-ai};
+    --glow: #{var(--c-glow-ai)};
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     gap: 0.6rem;
     min-height: 34px;
     padding: 0 0.35rem;
-    color: $--color-cream-dim;
+    color: var(--c-text-dim);
     font-size: 0.78rem;
     font-weight: 600;
     position: relative;
 
     &--code {
-      --glow: #{$--color-glow-code};
+      --glow: #{var(--c-glow-code)};
     }
 
     &:focus-visible {
@@ -94,7 +94,7 @@ defineProps({
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: 2px solid rgba(242, 236, 221, 0.45);
+    border: 2px solid var(--c-border-strong);
     transition:
       background 0.3s ease,
       border-color 0.3s ease,
@@ -120,8 +120,8 @@ defineProps({
     white-space: nowrap;
     padding: 0.25rem 0.7rem;
     border-radius: 999px;
-    background: rgba(6, 27, 24, 0.8);
-    border: 1px solid $--color-line;
+    background: var(--c-nav);
+    border: 1px solid var(--c-border);
     opacity: 0;
     transform: translateX(6px);
     pointer-events: none;
@@ -143,11 +143,11 @@ defineProps({
   &_skip {
     font-size: 0.8rem;
     font-weight: 700;
-    color: $--color-cream;
+    color: var(--c-text);
     padding: 0.45rem 0.9rem;
     border-radius: 999px;
-    background: rgba(6, 27, 24, 0.7);
-    border: 1px solid $--color-line;
+    background: var(--c-nav);
+    border: 1px solid var(--c-border);
     min-height: 36px;
     white-space: nowrap;
     display: inline-flex;
@@ -155,7 +155,7 @@ defineProps({
     gap: 0.3rem;
 
     &:hover {
-      color: $--color-accent;
+      color: var(--c-accent);
     }
   }
 }
@@ -177,7 +177,7 @@ defineProps({
     &_list {
       flex-direction: row;
       padding: 0.2rem 0.5rem;
-      background: rgba(6, 27, 24, 0.88);
+      background: var(--c-nav);
     }
 
     &_stop {
@@ -191,7 +191,7 @@ defineProps({
     }
 
     &_skip {
-      background: rgba(6, 27, 24, 0.88);
+      background: var(--c-nav);
       font-size: 0.74rem;
       min-height: 34px;
       padding: 0.3rem 0.75rem;

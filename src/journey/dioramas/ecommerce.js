@@ -18,7 +18,7 @@ import {
 
 // Blibli — e-commerce engineering. Mint glow (the code era): the storefront
 // with its search bar (SEO), the search lens, and the microservice nodes.
-export default function ecommerce(island, { glow, label }) {
+export default function ecommerce(island, { glow, label, brand }) {
   // fulfilment warehouse
   box(island, [11, 0.14, 13.4], [-3.4, 0, -0.2], mat('#3a4c49'))
   box(island, [5.2, 3.8, 8.6], [-5.8, 0.14, -2.2], mat('#2b6358'))
@@ -114,7 +114,7 @@ export default function ecommerce(island, { glow, label }) {
   box(services, [0.6, 0.6, 0.6], [0, 0.2, 0], palette.cream)
   halo(services, [0, 0.4, 0], 6, glow, 0.25)
 
-  sign(island, label, { pos: [-3.05, 3.6, 2.6], width: 5, height: 1, rotY: Math.PI / 2, glow })
+  sign(island, label, { pos: [-3.05, 3.6, 2.6], width: 5, rotY: Math.PI / 2, glow, brand })
 
   tree(island, [-8.8, -7], 0.9)
   tree(island, [-4.6, 8.4], 1)

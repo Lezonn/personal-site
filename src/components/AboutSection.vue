@@ -1,7 +1,6 @@
 <script setup>
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { useReveal } from '@/composables/useReveal'
-import leoImg from '@/assets/leo.webp'
 
 const root = useReveal()
 
@@ -47,18 +46,6 @@ function countUp() {
   countFrame = requestAnimationFrame(step)
 }
 
-// photo card tilts toward the pointer (2.5D)
-const tilt = reactive({ x: 0, y: 0 })
-function onTilt(event) {
-  const rect = event.currentTarget.getBoundingClientRect()
-  tilt.x = ((event.clientY - rect.top) / rect.height - 0.5) * -12
-  tilt.y = ((event.clientX - rect.left) / rect.width - 0.5) * 14
-}
-function resetTilt() {
-  tilt.x = 0
-  tilt.y = 0
-}
-
 onMounted(() => {
   if (
     !('IntersectionObserver' in window) ||
@@ -97,40 +84,20 @@ onUnmounted(() => {
             I'm Leonard Zonaphan — AI Product Owner for Process Automation at Astra TSO Auto2000. I
             turn field problems into shipped improvements, reporting impact up to C-level.
           </p>
-          <div class="about_focus">
-            <article
-              v-for="area in focusAreas"
-              :key="area.index"
-              class="about_row reveal"
-              style="transition-delay: 0.1s"
-            >
-              <span class="about_row_index">{{ area.index }}</span>
-              <div>
-                <h3>{{ area.title }}</h3>
-                <p>{{ area.text }}</p>
-              </div>
-            </article>
-          </div>
         </div>
-        <div class="about_photo reveal" style="transition-delay: 0.15s">
-          <div
-            class="about_card"
-            :style="{ '--rx': `${tilt.x}deg`, '--ry': `${tilt.y}deg` }"
-            @pointermove="onTilt"
-            @pointerleave="resetTilt"
+        <div class="about_focus">
+          <article
+            v-for="area in focusAreas"
+            :key="area.index"
+            class="about_row reveal"
+            style="transition-delay: 0.1s"
           >
-            <div class="about_card_back" aria-hidden="true" />
-            <img
-              :src="leoImg"
-              class="about_card_img"
-              alt="Portrait of Leonard Zonaphan"
-              width="900"
-              height="1200"
-              loading="lazy"
-            />
-            <span class="about_card_badge about_card_badge--top">AI Product Owner</span>
-            <span class="about_card_badge about_card_badge--bottom">Jakarta, ID</span>
-          </div>
+            <span class="about_row_index">{{ area.index }}</span>
+            <div>
+              <h3>{{ area.title }}</h3>
+              <p>{{ area.text }}</p>
+            </div>
+          </article>
         </div>
       </div>
       <div ref="metricsEl" class="about_metrics reveal">
@@ -152,7 +119,7 @@ onUnmounted(() => {
 .about {
   position: relative;
   background: radial-gradient(50vmax 30vmax at 100% 45%, rgba(232, 176, 75, 0.1), transparent 60%),
-    radial-gradient(50vmax 40vmax at 0% 80%, rgba(7, 90, 78, 0.45), transparent 60%), $--color-bg;
+    radial-gradient(50vmax 40vmax at 0% 80%, rgba(7, 90, 78, 0.45), transparent 60%), var(--c-bg);
   padding: $--spacing-xl 0;
   overflow: hidden;
 
@@ -171,7 +138,7 @@ onUnmounted(() => {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: $--color-accent;
+    color: var(--c-accent);
     margin-bottom: 0.5rem;
   }
 
@@ -181,13 +148,13 @@ onUnmounted(() => {
     line-height: 1.05;
     letter-spacing: -0.01em;
     text-wrap: balance;
-    color: $--color-cream;
+    color: var(--c-text);
     max-width: 760px;
     margin: 0;
 
     em {
       font-style: normal;
-      color: $--color-accent;
+      color: var(--c-highlight);
     }
   }
 
@@ -196,12 +163,12 @@ onUnmounted(() => {
     margin: $--spacing-s 0 0;
     font-size: $--font-h6;
     line-height: 1.65;
-    color: $--color-cream-dim;
+    color: var(--c-text-dim);
   }
 
   &_focus {
     margin-top: $--spacing-s;
-    border-top: 1px solid rgba(242, 236, 221, 0.3);
+    border-top: 1px solid var(--c-border);
   }
 
   &_row {
@@ -210,13 +177,13 @@ onUnmounted(() => {
     gap: 1.25rem;
     align-items: baseline;
     padding: 1.1rem 0.5rem;
-    border-bottom: 1px solid $--color-line;
+    border-bottom: 1px solid var(--c-border);
     transition:
       background 0.25s ease,
       padding 0.25s ease;
 
     &:hover {
-      background: rgba(242, 236, 221, 0.04);
+      background: var(--c-hover);
       padding-left: 1rem;
     }
 
@@ -224,91 +191,19 @@ onUnmounted(() => {
       font-family: $--title-font;
       font-size: $--font-h4;
       color: transparent;
-      -webkit-text-stroke: 1.5px $--color-accent;
+      -webkit-text-stroke: 1.5px var(--c-accent);
     }
 
     h3 {
       font-size: $--font-h5;
-      color: $--color-cream;
+      color: var(--c-text);
       margin: 0 0 0.25rem;
     }
 
     p {
       margin: 0;
       font-size: $--font-link;
-      color: $--color-cream-dim;
-    }
-  }
-
-  // ---------- 2.5D photo card ----------
-
-  &_photo {
-    justify-self: center;
-    width: min(100%, 360px);
-    perspective: 900px;
-    padding-top: 2.5rem;
-  }
-
-  &_card {
-    --rx: 0deg;
-    --ry: 0deg;
-    position: relative;
-    aspect-ratio: 3 / 3.6;
-    transform-style: preserve-3d;
-    transform: rotateX(var(--rx)) rotateY(var(--ry));
-    transition: transform 0.25s ease-out;
-
-    &_back {
-      position: absolute;
-      inset: 0;
-      border-radius: 28px;
-      background: radial-gradient(70% 60% at 50% 35%, rgba(232, 176, 75, 0.35), transparent 70%),
-        radial-gradient(90% 70% at 50% 100%, rgba(31, 122, 106, 0.7), transparent 75%),
-        $--color-bg-raised;
-      border: 1px solid rgba(242, 236, 221, 0.18);
-      box-shadow:
-        0 40px 80px rgba(0, 0, 0, 0.45),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    }
-
-    // the cut-out pops out of the frame, in front of it
-    &_img {
-      position: absolute;
-      left: 6%;
-      bottom: 0;
-      width: 88%;
-      height: auto;
-      transform: translateZ(40px);
-      border-radius: 0 0 28px 28px;
-      mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
-      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
-    }
-
-    &_badge {
-      position: absolute;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.45rem 0.95rem;
-      border-radius: 999px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-
-      &--top {
-        top: 12%;
-        left: -6%;
-        color: $--color-ink;
-        background: $--color-accent;
-        transform: translateZ(70px);
-      }
-
-      &--bottom {
-        bottom: 9%;
-        right: -5%;
-        color: $--color-cream;
-        background: rgba(6, 27, 24, 0.85);
-        border: 1px solid $--color-line;
-        transform: translateZ(60px);
-      }
+      color: var(--c-text-dim);
     }
   }
 
@@ -318,19 +213,19 @@ onUnmounted(() => {
     gap: 1.5rem 0;
     margin-top: $--spacing-m;
     padding-top: $--spacing-s;
-    border-top: 1px solid $--color-line;
+    border-top: 1px solid var(--c-border);
   }
 
   &_metric {
     padding: 0 1rem;
-    border-left: 2px solid $--color-accent;
+    border-left: 2px solid var(--c-accent);
 
     &_value {
       display: block;
       font-family: $--title-font;
       font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
       line-height: 1;
-      color: $--color-cream;
+      color: var(--c-text);
       font-variant-numeric: tabular-nums;
     }
 
@@ -338,7 +233,7 @@ onUnmounted(() => {
       display: block;
       margin-top: 0.35rem;
       font-size: $--font-mini;
-      color: $--color-cream-dim;
+      color: var(--c-text-dim);
     }
   }
 }
@@ -351,15 +246,8 @@ onUnmounted(() => {
 
 @media (min-width: 960px) {
   .about_grid {
-    grid-template-columns: 1.35fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: $--spacing-l;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about_card {
-    transform: none;
-    transition: none;
   }
 }
 </style>

@@ -19,7 +19,7 @@ import {
 
 // The Men's Barbershop — IT Solution Consultant. Gold glow: the POS tablet,
 // the auto-generated daily report, and the digital membership card.
-export default function barbershop(island, { glow, label }) {
+export default function barbershop(island, { glow, label, brand }) {
   // checkered floor
   const tiles = canvasTexture(256, 256, (ctx) => {
     for (let r = 0; r < 8; r++) {
@@ -125,7 +125,7 @@ export default function barbershop(island, { glow, label }) {
   box(pole, [0.06, 1.8, 0.06], [0.22, 0.3, 0], glassMat('#ffffff', 0.3))
   ball(pole, 0.26, [0, 2.05, 0], palette.cream)
 
-  sign(island, label, { pos: [-0.2, 4.15, 0], width: 4.6, rotY: Math.PI / 2, glow })
+  sign(island, label, { pos: [-0.2, 4.15, 0], width: 4.6, rotY: Math.PI / 2, glow, brand })
 
   // sidewalk bench + greenery
   box(island, [0.7, 0.12, 2.2], [1.6, 0.55, 2.4], palette.wood)

@@ -80,11 +80,18 @@ onUnmounted(() => {
 
 .bubble {
   position: absolute;
-  opacity: 0.45;
   border-radius: 50%;
   bottom: -60px;
-  background: radial-gradient(rgba(242, 236, 221, 0.4), rgba(127, 220, 196, 0.06) 70%);
-  border: 1px solid rgba(242, 236, 221, 0.18);
+  // soap-bubble glass: bright rim, clear middle, small highlight
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95) 0 9%, transparent 10%),
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.08) 0 55%,
+      rgba(255, 255, 255, 0.45) 78%,
+      rgba(127, 220, 196, 0.45) 100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset -4px -6px 12px rgba(242, 184, 79, 0.18);
   animation-name: floatUp;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
