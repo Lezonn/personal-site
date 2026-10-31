@@ -7,7 +7,7 @@ and career journey are a Three.js scene. Scripts are in `package.json`.
 ## Page anatomy
 
 `App.vue` stacks: `NavigationBar` → `HomeSection` (hero: portrait in a bubble with orbiting skill
-bubbles, the hook, proof chips) → `JourneyWorld` (3D journey) → `AboutSection` → `FooterBar`.
+bubbles, the hook, calls to action) → `JourneyWorld` (3D journey) → `AboutSection` → `FooterBar`.
 `App.vue` also owns the SEO metadata (vue-meta, JSON-LD Person); `index.html` carries a static copy
 of the same meta for no-JS crawlers, so edit both together.
 
