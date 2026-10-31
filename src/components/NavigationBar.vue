@@ -4,9 +4,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const isNavbarFloating = ref(false)
 const links = [
   { label: 'Home', href: '#home' },
+  { label: 'Journey', href: '#journey' },
   { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#project' },
   { label: 'Contact', href: '#contact' }
 ]
 
@@ -25,7 +24,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="d-flex justify-center position-fixed w-100">
+  <header>
     <nav :class="{ 'navbar-floating': isNavbarFloating }" aria-label="Primary">
       <a v-for="link in links" :key="link.href" :href="link.href">
         {{ link.label }}
@@ -38,6 +37,12 @@ onUnmounted(() => {
 @import '@/assets/styles/variables';
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   z-index: 1000;
   pointer-events: none;
 }
@@ -56,7 +61,7 @@ nav {
   a {
     font-weight: 600;
     position: relative;
-    color: $--color-dark-light;
+    color: var(--c-text);
     margin: $--spacing-xxs;
     padding: 0.35rem $--spacing-xxs;
     white-space: nowrap;
@@ -68,7 +73,7 @@ nav {
       bottom: 2px;
       width: 100%;
       height: 2px;
-      background: rgba(7, 90, 78, 0.6);
+      background: var(--c-accent);
       border-radius: 2px;
       transform: scaleX(0);
       transition: transform 0.3s ease;
@@ -82,7 +87,7 @@ nav {
     }
 
     &:focus-visible {
-      outline: 2px solid $--color-text-primary;
+      outline: 2px solid var(--c-accent);
       outline-offset: 3px;
       border-radius: 6px;
     }
@@ -90,10 +95,11 @@ nav {
 }
 
 .navbar-floating {
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--c-nav);
+  border: 1px solid var(--c-border);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  box-shadow: 0 8px 30px rgba(51, 51, 51, 0.1);
+  box-shadow: 0 10px 30px var(--c-shadow);
 }
 
 @media (max-width: 560px) {
@@ -104,10 +110,14 @@ nav {
     padding: 0.3rem 0.55rem;
   }
 
+  // 44px-tall links so they are easy to hit with a thumb
   nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-size: 0.82rem;
-    margin: 0.05rem;
-    padding: 0.32rem 0.45rem;
+    margin: 0 0.05rem;
+    padding: 0 0.45rem;
   }
 }
 </style>

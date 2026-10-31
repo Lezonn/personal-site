@@ -8,11 +8,12 @@ This repository hosts the source code for my personal website.
 
 ## Overview
 
-This project contains the codebase for my personal website, showcasing my portfolio, projects, and other relevant information.
+This project contains the codebase for my personal website: a 3D ride through my career journey, from campus to AI product work.
 
 ## Technologies Used
 
-- Vue.js
+- Vue.js + Vuetify
+- Three.js (3D career journey)
 - SASS
 - HTML
 - CSS
