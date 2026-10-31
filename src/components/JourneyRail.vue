@@ -72,7 +72,8 @@ defineProps({
     flex-direction: row-reverse;
     align-items: center;
     gap: 0.6rem;
-    min-height: 34px;
+    min-height: 40px;
+    min-width: 32px;
     padding: 0 0.35rem;
     color: var(--c-text-dim);
     font-size: 0.78rem;
@@ -181,8 +182,8 @@ defineProps({
     }
 
     &_stop {
-      min-height: 32px;
-      min-width: 26px;
+      min-height: 44px;
+      min-width: 36px;
       justify-content: center;
     }
 
@@ -192,8 +193,8 @@ defineProps({
 
     &_skip {
       background: var(--c-nav);
-      font-size: 0.74rem;
-      min-height: 34px;
+      font-size: 0.75rem;
+      min-height: 44px;
       padding: 0.3rem 0.75rem;
     }
   }

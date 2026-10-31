@@ -8,7 +8,6 @@ const LINKEDIN = 'https://www.linkedin.com/in/leonard-zonaphan/'
 const GITHUB = 'https://github.com/Lezonn'
 
 const AUTO2000 = { name: 'Auto2000', logo: '/journey/logos/auto2000.png' }
-const BINUS = { name: 'BINUS', logo: '/journey/logos/binus.png' }
 
 export const stops = [
   {
@@ -102,7 +101,7 @@ export const stops = [
     scene: 'itDivision',
     glow: 'code',
     sign: 'IT DIVISION',
-    brand: BINUS,
+    brand: { name: 'BINUS IT Division', logo: '/journey/logos/binus-it.png' },
     year: '2021',
     railLabel: 'IT Division',
     period: 'Mar 2021 — Mar 2022',
@@ -123,7 +122,7 @@ export const stops = [
     scene: 'campus',
     glow: 'code',
     sign: 'CAMPUS',
-    brand: BINUS,
+    brand: { name: 'BINUS University' },
     year: '2020',
     railLabel: 'Campus',
     period: 'Sep 2020 — Jul 2024',

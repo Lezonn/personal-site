@@ -20,12 +20,6 @@ const icons = {
   code: 'M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12',
   chart: 'M4 20V11M10 20V5M16 20v-6M3 20h18'
 }
-
-const proof = [
-  { value: '4', label: 'GenAI products shipped' },
-  { value: '~15', label: 'RPA bots across 127 branches' },
-  { value: '68%', label: 'workload cut by automation' }
-]
 </script>
 
 <template>
@@ -69,11 +63,6 @@ const proof = [
             actually use.
           </span>
         </h1>
-        <ul class="home_proof">
-          <li v-for="p in proof" :key="p.label">
-            <strong>{{ p.value }}</strong> {{ p.label }}
-          </li>
-        </ul>
         <div class="home_actions">
           <a class="home_btn home_btn--primary" href="#journey">Take the ride ↓</a>
           <a class="home_btn home_btn--secondary" href="#contact">Get in touch</a>
@@ -118,7 +107,7 @@ const proof = [
   &_visual {
     position: relative;
     justify-self: center;
-    width: min(440px, 78vw);
+    width: min(520px, 78vw);
     aspect-ratio: 1;
   }
 
@@ -276,31 +265,6 @@ const proof = [
     }
   }
 
-  &_proof {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-
-    li {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 0.4rem;
-      padding: 0.45rem 0.9rem;
-      border-radius: 14px;
-      font-size: 0.85rem;
-      color: var(--c-text-dim);
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-    }
-
-    strong {
-      font-family: $--title-font;
-      font-size: 1.35rem;
-      color: var(--c-highlight);
-    }
-  }
-
   &_actions {
     display: flex;
     flex-wrap: wrap;
@@ -385,7 +349,6 @@ const proof = [
     justify-self: center;
   }
 
-  .home_proof,
   .home_actions {
     justify-content: center;
   }
@@ -393,7 +356,7 @@ const proof = [
 
 @media (max-width: 560px) {
   .home_eyebrow {
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     padding: 0.32rem 0.8rem;
   }
@@ -406,7 +369,7 @@ const proof = [
   .home_skill {
     gap: 0.35rem;
     padding: 0.25rem 0.6rem 0.25rem 0.25rem;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -420,10 +383,6 @@ const proof = [
         height: 14px;
       }
     }
-  }
-
-  .home_proof li {
-    font-size: 0.78rem;
   }
 }
 

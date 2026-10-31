@@ -110,10 +110,14 @@ nav {
     padding: 0.3rem 0.55rem;
   }
 
+  // 44px-tall links so they are easy to hit with a thumb
   nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-size: 0.82rem;
-    margin: 0.05rem;
-    padding: 0.32rem 0.45rem;
+    margin: 0 0.05rem;
+    padding: 0 0.45rem;
   }
 }
 </style>

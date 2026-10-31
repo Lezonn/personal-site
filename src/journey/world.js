@@ -411,7 +411,7 @@ export function createWorld(
     transparent: true,
     opacity: 0.88
   })
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 6; i++) {
     const cloud = new THREE.Group()
     const puffs = 3 + (i % 3)
     for (let k = 0; k < puffs; k++) {
@@ -420,12 +420,9 @@ export function createWorld(
       puff.position.set(k * 3 - puffs * 1.5, Math.random() * 1.2, Math.random() * 2)
       cloud.add(puff)
     }
-    cloud.scale.set(1.3, 0.55, 0.9)
-    cloud.position.set(
-      i % 2 ? THREE.MathUtils.randFloat(-90, -40) : THREE.MathUtils.randFloat(50, 100),
-      THREE.MathUtils.randFloat(32, 48),
-      THREE.MathUtils.randFloat(span.z[1], span.z[0])
-    )
+    cloud.scale.set(1, 0.45, 0.7)
+    // behind the route as seen by every camera (cameras sit on the +x side)
+    cloud.position.set(-70 - (i % 3) * 18, 4 + (i % 2) * 10, 20 - i * 42)
     cloud.userData.speed = THREE.MathUtils.randFloat(0.4, 1)
     scene.add(cloud)
     clouds.push(cloud)
@@ -588,8 +585,8 @@ export function createWorld(
       geo.attributes.position.needsUpdate = true
     }
     for (const cloud of clouds) {
-      cloud.position.x += cloud.userData.speed * dt
-      if (cloud.position.x > 110) cloud.position.x = -110
+      cloud.position.z -= cloud.userData.speed * dt
+      if (cloud.position.z < span.z[1] - 40) cloud.position.z = span.z[0]
     }
     renderer.render(scene, camera)
     onFrame?.({ t: currentT, pins: project() })

@@ -15,6 +15,7 @@ const tier = detectTier()
 const mode = ref(tier === 'static' ? 'static' : '3d')
 const root = ref(null)
 const stage = ref(null)
+const bar = ref(null)
 const canvas = ref(null)
 const ready = ref(false)
 const progress = ref(0)
@@ -36,7 +37,8 @@ const drive = computed(() => {
 
 // where the island sits on screen: clear of the bar, and aside when details are open
 const framing = {
-  hero: (portrait) => (portrait ? [0, 0.12] : [0.1, 0.1]),
+  // keep the first island clear of the caption bar in the opening shot
+  hero: (portrait) => (portrait ? [0, 0.2] : [0.1, 0.17]),
   stop: (i, portrait) => {
     if (portrait) return detailsOpen.value ? [0, 0.3] : [0, 0.15]
     return detailsOpen.value ? [-0.16, 0.1] : [0, 0.1]
@@ -131,6 +133,12 @@ onMounted(() => {
   })
   resizeObserver.observe(root.value)
   if (stage.value) resizeObserver.observe(stage.value)
+  // the bar is as tall as its active chapter; the details panel sits just above it
+  if (bar.value) {
+    new ResizeObserver(([entry]) => {
+      stage.value?.style.setProperty('--bar-h', `${Math.round(entry.borderBoxSize[0].blockSize)}px`)
+    }).observe(bar.value)
+  }
   viewObserver = new IntersectionObserver(([entry]) => {
     inView.value = entry.isIntersecting
     syncRunning()
@@ -165,7 +173,7 @@ onUnmounted(() => {
     <!-- 3D: sticky stage with the caption bar and details panel -->
     <div v-if="mode === '3d'" ref="stage" class="world_stage">
       <canvas ref="canvas" class="world_canvas" :class="{ 'is-ready': ready }" aria-hidden="true" />
-      <div class="world_bar">
+      <div ref="bar" class="world_bar">
         <span class="world_progress" aria-hidden="true">
           <span :style="{ transform: `scaleX(${active < 0 ? 0 : drive})` }" />
         </span>
@@ -192,7 +200,7 @@ onUnmounted(() => {
             <h3 class="world_title">{{ stop.title }}</h3>
             <p class="world_company">
               <img
-                v-if="!missingLogos.has(stop.brand.logo)"
+                v-if="stop.brand.logo && !missingLogos.has(stop.brand.logo)"
                 :src="stop.brand.logo"
                 :alt="stop.brand.name"
                 class="world_logo"
@@ -224,14 +232,16 @@ onUnmounted(() => {
         :class="{ 'is-open': detailsOpen && active >= 0 }"
         :aria-hidden="!(detailsOpen && active >= 0)"
       >
-        <p class="world_meta">
-          <span class="world_badge" :class="`world_badge--${current.glow}`">
-            {{ current.category }}
-          </span>
-          {{ current.period }}
-        </p>
-        <h3 class="world_title">{{ current.title }}</h3>
-        <p class="world_company">{{ current.company }}</p>
+        <div class="world_drawer_head">
+          <p class="world_meta">
+            <span class="world_badge" :class="`world_badge--${current.glow}`">
+              {{ current.category }}
+            </span>
+            {{ current.period }}
+          </p>
+          <h3 class="world_title">{{ current.title }}</h3>
+          <p class="world_company">{{ current.company }}</p>
+        </div>
         <p class="world_summary">{{ current.summary }}</p>
         <ul class="world_points">
           <li v-for="point in current.points" :key="point">{{ point }}</li>
@@ -336,7 +346,6 @@ onUnmounted(() => {
     z-index: 2;
     width: min(1100px, calc(100% - 2rem));
     min-height: 112px;
-    display: grid;
     border-radius: 22px;
     background: var(--c-surface);
     border: 1px solid rgba(255, 255, 255, 0.95);
@@ -362,10 +371,12 @@ onUnmounted(() => {
     }
   }
 
-  // every chapter shares one grid cell and cross-fades
+  // only the active chapter is in flow (it sets the bar's height); the rest sit on
+  // top of it out of flow and cross-fade
   &_chapter {
     --glow: var(--c-glow-ai);
-    grid-area: 1 / 1;
+    position: absolute;
+    inset: 0 0 auto 0;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto auto;
     align-items: center;
@@ -390,6 +401,7 @@ onUnmounted(() => {
     }
 
     &.is-active {
+      position: relative;
       opacity: 1;
       visibility: visible;
       transform: none;
@@ -409,7 +421,7 @@ onUnmounted(() => {
     flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -492,7 +504,7 @@ onUnmounted(() => {
     position: absolute;
     top: 88px;
     right: 4.5rem;
-    bottom: calc(112px + 2.5rem);
+    max-height: calc(100% - 88px - var(--bar-h, 112px) - 2.5rem);
     z-index: 2;
     width: min(400px, calc(100% - 2rem));
     padding: 1.4rem;
@@ -614,17 +626,26 @@ onUnmounted(() => {
 
   .world_more {
     grid-column: 1 / -1;
-    min-height: 40px;
+    min-height: 44px;
   }
 
+  // the bar already shows the role, so the sheet starts at the story
   .world_drawer {
     top: auto;
     left: 0.75rem;
     right: 0.75rem;
-    bottom: 236px;
+    bottom: calc(var(--bar-h, 200px) + 1.25rem);
     width: auto;
-    max-height: 46vh;
+    max-height: calc(100% - var(--bar-h, 200px) - 9rem);
     transform: translateY(40px);
+
+    &_head {
+      display: none;
+    }
+  }
+
+  .world_summary {
+    margin-top: 0;
   }
 }
 
